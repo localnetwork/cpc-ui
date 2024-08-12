@@ -2,32 +2,46 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@font-face {
+  font-family: "Canela";
+  src: url("/fonts/Canela-Regular.woff2") format("woff2"),
+    url("/fonts/Canela-Regular.woff") format("woff");
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+@font-face {
+  font-family: "GT-America";
+  src: url("/fonts/GT-America-Standard-Regular.woff2") format("woff2"),
+    url("/fonts/GT-America-Standard-Regular.woff") format("woff");
+  font-weight: 400;
 }
-
+@font-face {
+  font-family: "GT-America";
+  src: url("/fonts/GT-America-Standard-Medium.woff2") format("woff2"),
+    url("/fonts/GT-America-Standard-Medium.woff") format("woff");
+  font-weight: 600;
+}
+@font-face {
+  font-family: "GT-America";
+  src: url("/fonts/GT-America-Standard-Bold.woff2") format("woff2"),
+    url("/fonts/GT-America-Standard-Bold.woff") format("woff");
+  font-weight: 700;
+}
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  color: #fff;
+  font-size: 18px;
+  background-color: #0e0e0e;
+  line-height: 30px;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+.font-gt {
+  font-family: "GT-America", sans-serif;
+}
+.font-secondary {
+  font-family: "Canela", serif;
+}
+
+@media (min-width: 1200px) {
+  .container {
+    @apply max-w-[1440px] mx-auto px-[15px];
   }
 }
