@@ -4,7 +4,7 @@ export default function Banner() {
   return (
     <section className="min-h-[700px] h-full-screen bg-black w-full flex items-center justify-center flex-col relative">
       <Image
-        src="/banners/banner1.jpg"
+        src="/banners/Banner1.jpg"
         alt="Banner"
         width={1920}
         height={1080}

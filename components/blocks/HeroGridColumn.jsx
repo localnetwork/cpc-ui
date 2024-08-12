@@ -5,19 +5,19 @@ export default function HeroGridColumn() {
     {
       title: "Excellent Academics",
       description: `Learn about PCA’s differentiated learning approach that meets each student where they’re at in their learning, providing opportunities for every child to grow into their God-given potential. In comparison to other New Hampshire school districts, PCA ranks in the top 5% across the state.Our students consistently test higher than the state and national averages in Math and English, and our Mosaic Learning Team makes sure no student is left behind.`,
-      image: "/images/hero2.webp",
+      image: "/images/Hero2.webp",
       color: "#7f821c",
     },
     {
       title: "Parent Partnership",
       description: `Learn about PCA’s differentiated learning approach that meets each student where they’re at in their learning, providing opportunities for every child to grow into their God-given potential. In comparison to other New Hampshire school districts, PCA ranks in the top 5% across the state.Our students consistently test higher than the state and national averages in Math and English, and our Mosaic Learning Team makes sure no student is left behind.`,
-      image: "/images/hero2.webp",
+      image: "/images/Hero2.webp",
       color: "#1B217A",
     },
     {
       title: "Impacting the World for Good",
       description: `Learn about PCA’s differentiated learning approach that meets each student where they’re at in their learning, providing opportunities for every child to grow into their God-given potential. In comparison to other New Hampshire school districts, PCA ranks in the top 5% across the state.Our students consistently test higher than the state and national averages in Math and English, and our Mosaic Learning Team makes sure no student is left behind.`,
-      image: "/images/hero2.webp",
+      image: "/images/Hero2.webp",
       color: "#9a0c16",
     },
   ];
