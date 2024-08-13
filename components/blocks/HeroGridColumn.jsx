@@ -40,6 +40,7 @@ export default function HeroGridColumn() {
                     className="w-full flex"
                     width={500}
                     height={300}
+                    alt="Sample Text"
                   />
                   <div
                     className="p-[30px] grow"

@@ -11,22 +11,22 @@ export default function Footer() {
             </h2>
             <div className="mt-[30px]">
               <div className="mb-[15px]">
-                <Link href="#">Data Privacy Notice</Link>
+                <Link href="/sample-link">Data Privacy Notice</Link>
               </div>
               <div className="mb-[15px]">
-                <Link href="#">FOI Portal</Link>
+                <Link href="/sample-link">FOI Portal</Link>
               </div>
               <div className="mb-[15px]">
-                <Link href="#">Transparency Seal</Link>
+                <Link href="/sample-link">Transparency Seal</Link>
               </div>
               <div className="mb-[15px]">
-                <Link href="#">Citizen's Charter</Link>
+                <Link href="/sample-link">{`Citizen's Charter`}</Link>
               </div>
               <div className="mb-[15px]">
-                <Link href="#">Careers</Link>
+                <Link href="/sample-link">Careers</Link>
               </div>
               <div className="mb-[15px]">
-                <Link href="#">Publications</Link>
+                <Link href="/sample-link">Publications</Link>
               </div>
             </div>
           </div>
@@ -57,6 +57,7 @@ export default function Footer() {
               </svg>
               Purok 3 Gabi Cordova Cebu 6015
             </div>
+
             <div className="flex items-center mb-[15px]">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -99,7 +100,7 @@ export default function Footer() {
             <div className="flex flex-wrap gap-[15px]">
               <Link
                 className="hover:mt-[-5px] hover:opacity-80 transition inline-block "
-                href="#"
+                href="/sample-link"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -125,7 +126,7 @@ export default function Footer() {
               </Link>
               <Link
                 className="hover:mt-[-5px] hover:opacity-80 transition inline-block "
-                href="#"
+                href="/sample-link"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -156,7 +157,7 @@ export default function Footer() {
               </Link>
               <Link
                 className="hover:mt-[-5px] hover:opacity-80 transition inline-block "
-                href="#"
+                href="/sample-link"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -185,7 +186,7 @@ export default function Footer() {
               </Link>
               <Link
                 className="hover:mt-[-5px] hover:opacity-80 transition inline-block "
-                href="#"
+                href="/sample-link"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

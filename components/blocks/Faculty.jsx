@@ -38,6 +38,7 @@ export default function Faculty() {
                 src={item.image}
                 width={500}
                 height={500}
+                alt="Sample Text"
               />
               <h3 className="font-secondary mt-[30px] leading-normal text-[30px] mb-[15px]">
                 {item.name}

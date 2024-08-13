@@ -44,6 +44,7 @@ export default function HeroGrid() {
                 src="/images/Hero1.webp"
                 width={600}
                 height={400}
+                alt="Sample Text"
                 className="w-full group-hover:scale-105 transition"
               />
             </div>

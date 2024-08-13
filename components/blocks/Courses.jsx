@@ -39,6 +39,7 @@ export default function Courses() {
                   src={item.image}
                   width={600}
                   height={400}
+                  alt="Sample TExt"
                 />
 
                 <span className="absolute group-hover:opacity-100 opacity-0 transition-opacity duration-[0.3s] ease-[cubic-bezier(0.4,0,0.2,1)] z-[1] top-0 left-0 w-full h-full bg-[linear-gradient(0deg,#000,#222_25%,transparent)]" />

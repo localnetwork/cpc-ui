@@ -88,6 +88,7 @@ export default function News() {
                     src={item.image}
                     width={600}
                     height={400}
+                    alt="Sample Text"
                     className="object-cover w-full"
                   />
                 </div>
