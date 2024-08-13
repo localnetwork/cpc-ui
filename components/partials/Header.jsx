@@ -24,7 +24,7 @@ export default function Header() {
   return (
     <Headroom className={`fixed top-0 left-0 w-full z-[1000] `}>
       <header
-        className={`flex flex-wrap items-center justify-between min-h-[90px] pl-[40px] ${
+        className={`flex flex-wrap items-center justify-between min-h-[90px] pl-[50px] ${
           scrolled ? "bg-white shadow-md" : ""
         }`}
       >
@@ -44,8 +44,16 @@ export default function Header() {
             Cordova Public College
           </span>
         </div>
-        <div className="bg-[#0e0e0e] flex flex-wrap text-[18px] self-stretch items-center">
-          <div className="flex items-center py-[20px] px-[35px] h-full border-r-[#292c2f] border-r-[1px]">
+        <div
+          className={`${
+            scrolled ? "bg-[#1B217A]" : ""
+          } flex flex-wrap text-[18px] self-stretch items-center`}
+        >
+          <div
+            className={`${
+              scrolled ? "flex" : "hidden"
+            } items-center py-[20px] px-[35px] h-full border-r-[#2b3180] border-r-[1px]`}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"

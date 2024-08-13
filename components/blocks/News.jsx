@@ -4,14 +4,14 @@ import Link from "next/link";
 export default function News() {
   const staticData = [
     {
-      title: "Harvard Public Art & Culture Tour: Allston",
+      title: "Cordova Public College I.T Days",
       date: "October 12, 2021",
       image: "/banners/Banner1.jpg",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     },
     {
-      title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+      title: "This is fill in text.",
       date: "October 12, 2021",
       image: "/banners/Banner1.jpg",
       description:

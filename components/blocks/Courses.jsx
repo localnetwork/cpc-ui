@@ -24,7 +24,7 @@ export default function Courses() {
     },
   ];
   return (
-    <section className="py-[100px]">
+    <section className="py-[100px] px-[50px]">
       <div className="container">
         <h2 className="font-secondary leading-normal text-[80px] text-white mb-[25px]">
           Courses
@@ -45,7 +45,7 @@ export default function Courses() {
                 <span className="absolute group-hover:opacity-0 opacity-100 z-[1] top-0 left-0 w-full h-full bg-[linear-gradient(0deg,#0e0e0e,transparent)]" />
               </div>
               <div className="content absolute p-[50px] bottom-0 left-0 w-full z-[100] pr-[100px]">
-                <h3 className="font-secondary leading-[60px] text-[50px] text-white mb-[25px]">
+                <h3 className="font-secondary leading-[60px] text-[45px] text-white mb-[25px]">
                   {item.title}
                 </h3>
                 <Link
