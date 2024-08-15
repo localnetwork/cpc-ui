@@ -1,23 +1,18 @@
 import Image from "next/image";
 
-export default function HeroGrid() {
+export default function Block({ block }) {
   return (
     <section className="p-[50px]">
       <div className="container">
         <div className="flex flex-wrap mx-[-30px] justify-between items-center">
           <div className="px-[30px] max-w-[50%] w-full">
             <h2 className="text-[48px] font-secondary mb-[30px] leading-[65px]">
-              Preparing Students to Impact the World for Good.
+              {block?.Title}
             </h2>
-            <div className="opacity-70 leading-[35px]">
-              <p>
-                Cordova Public College, founded in 2005, is a dynamic
-                institution dedicated to fostering academic growth and personal
-                development. Located in the heart of Cordova, our college offers
-                a diverse range of programs designed to prepare students for
-                success in an ever-changing world.
-              </p>
-            </div>
+            <div
+              className="opacity-70 leading-[35px]"
+              dangerouslySetInnerHTML={{ __html: block?.Description }}
+            />
           </div>
           <div className="px-[30px] max-w-[50%] w-full relative group">
             <div className="relative overflow-hidden">
@@ -41,7 +36,7 @@ export default function HeroGrid() {
                 </svg>
               </span>
               <Image
-                src="/images/Hero1.webp"
+                src="/images/cpc-cta.webp"
                 width={600}
                 height={400}
                 alt="Sample Text"

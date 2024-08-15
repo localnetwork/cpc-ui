@@ -4,8 +4,7 @@
 
 @font-face {
   font-family: "Canela";
-  src: url("/fonts/Canela-Regular.woff2") format("woff2"),
-    url("/fonts/Canela-Regular.woff") format("woff");
+  src: url("/fonts/Canela.woff2") format("woff2");
 }
 
 @font-face {
@@ -31,6 +30,10 @@ body {
   font-size: 18px;
   background-color: #0e0e0e;
   line-height: 30px;
+}
+
+#__next {
+  @apply min-h-screen flex flex-col;
 }
 
 .font-gt {

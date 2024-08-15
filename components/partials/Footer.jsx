@@ -1,6 +1,8 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
   return (
     <footer className="bg-black py-[100px] px-[50px] text-[#8996a0]">
       <div className="container">
@@ -27,6 +29,9 @@ export default function Footer() {
               </div>
               <div className="mb-[15px]">
                 <Link href="/sample-link">Publications</Link>
+              </div>
+              <div className="mb-[15px]">
+                <Link href="/sample-link">Contact</Link>
               </div>
             </div>
           </div>
@@ -99,7 +104,7 @@ export default function Footer() {
             </h2>
             <div className="flex flex-wrap gap-[15px]">
               <Link
-                className="hover:mt-[-5px] hover:opacity-80 transition inline-block "
+                className="hover:mt-[-5px] hover:opacity-80 transition-[all_ease_0.3s] inline-block "
                 href="/sample-link"
               >
                 <svg
@@ -125,7 +130,7 @@ export default function Footer() {
                 </svg>
               </Link>
               <Link
-                className="hover:mt-[-5px] hover:opacity-80 transition inline-block "
+                className="hover:mt-[-5px] hover:opacity-80 transition-[all_ease_0.3s] inline-block "
                 href="/sample-link"
               >
                 <svg
@@ -156,7 +161,7 @@ export default function Footer() {
                 </svg>
               </Link>
               <Link
-                className="hover:mt-[-5px] hover:opacity-80 transition inline-block "
+                className="hover:mt-[-5px] hover:opacity-80 transition-[all_ease_0.3s] inline-block "
                 href="/sample-link"
               >
                 <svg
@@ -185,7 +190,7 @@ export default function Footer() {
                 </svg>
               </Link>
               <Link
-                className="hover:mt-[-5px] hover:opacity-80 transition inline-block "
+                className="hover:mt-[-5px] hover:opacity-80 transition-[all_ease_0.3s] inline-block "
                 href="/sample-link"
               >
                 <svg
@@ -219,6 +224,16 @@ export default function Footer() {
               />
             </div>
           </div>
+        </div>
+
+        <div className="flex items-center mt-[100px] justify-between">
+          <p>Copyright &copy; {currentYear} Cordova Public College.</p>
+          <p className="opacity-50">
+            <a href="https://dio-ddev.vercel.app/" target="_blank">
+              Web Develop By:{" "}
+              <span className="underline ">Diome Nike Potot</span>
+            </a>
+          </p>
         </div>
       </div>
     </footer>
