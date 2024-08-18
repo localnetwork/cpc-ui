@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
-import facultyEntriesData from "@/lib/prebuildScripts/static/faculty-entries.json";
+// import facultyEntriesData from "@/lib/prebuildScripts/static/faculty-entries.json";
+
+import facultyEntriesData from "@/prebuild/static-data/faculty-entries.json";
 import siteConfig from "@/site.config";
 
 export default function Faculty({ block }) {

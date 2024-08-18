@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import newsEntriesData from "@/lib/prebuildScripts/static/news-block-articles.json";
+// import newsEntriesData from "@/lib/prebuildScripts/static/news-block-articles.json";
+import newsEntriesData from "@/prebuild/static-data/news-block-articles.json";
 export default function News({ block }) {
   const staticData = [
     {

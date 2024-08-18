@@ -6,7 +6,6 @@
     "dev": "next dev",
     "predev": "node prebuild/prebuild-dev.js",
     "prebuild": "node prebuild/prebuild-dev.js",
-    "postbuild": "next-sitemap",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
