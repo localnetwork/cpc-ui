@@ -42,7 +42,9 @@ body {
 .font-secondary {
   font-family: "Canela", serif;
 }
-
+p:not(:last-of-type) {
+  margin-bottom: 1.5em;
+}
 @media (min-width: 1200px) {
   .container {
     @apply max-w-[1440px] mx-auto px-[15px];
