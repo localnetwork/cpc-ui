@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "node sample.js", 
+    "predev": "node lib/prebuildscripts/preBuildDev",
+    "prebuild": "node lib/prebuildscripts/preBuildDev",
+    "postbuild": "next-sitemap",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
