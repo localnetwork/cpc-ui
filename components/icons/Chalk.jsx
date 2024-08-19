@@ -1,6 +1,6 @@
 export default function Chalk() {
   return (
-    <svg className="no-area">
+    <svg className="no-area" width={0} height={0}>
       <filter id="chalk">
         <feTurbulence
           result="T"

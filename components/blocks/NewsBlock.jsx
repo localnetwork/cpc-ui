@@ -1,38 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 // import newsEntriesData from "@/lib/prebuildScripts/static/news-block-articles.json";
+import helper from "@/lib/helpers/helper";
 import newsEntriesData from "@/prebuild/static-data/news-block-articles.json";
 export default function News({ block }) {
-  const staticData = [
-    {
-      title: "Cordova Public College I.T Days",
-      date: "October 12, 2021",
-      image: "/banners/Banner1.jpg",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    },
-    {
-      title: "This is fill in text.",
-      date: "October 12, 2021",
-      image: "/banners/Banner1.jpg",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    },
-    {
-      title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-      date: "October 12, 2021",
-      image: "/banners/Banner1.jpg",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    },
-    {
-      title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-      date: "October 12, 2021",
-      image: "/banners/Banner1.jpg",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    },
-  ];
+  const { timeAgo } = helper;
   return (
     <section className="py-[100px] px-[50px] bg-[#F3F4F4] text-[#1e1e1e]">
       <div className="container">
@@ -67,7 +39,7 @@ export default function News({ block }) {
                   <div className="w-full max-w-[30%] flex flex-col px-[15px]">
                     <h3 className="font-bold text-[24px] mb-2">{item.Title}</h3>
                     <span className="text-[#939393] text-[16px] font-bold">
-                      {item.date}
+                      {timeAgo(item?.publishedAt)}
                     </span>
                     <div className="mt-[50px] font-bold ">
                       <Link

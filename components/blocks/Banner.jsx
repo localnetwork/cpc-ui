@@ -63,7 +63,6 @@ export default function Banner({ block }) {
                 ease: "easeInOut",
               }}
               className="h-[8px] w-[2px] block rounded-full bg-white block"
-              style={{ filter: "url(#chalk)" }}
             ></motion.span>
           </motion.div>
         </motion.div>

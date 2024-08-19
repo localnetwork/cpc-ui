@@ -62,6 +62,12 @@ module.exports.preBuildDevelopment = async () => {
     facultyEntriesHandler.data
   );
 
+  const mainMenuHandler = await axios.get(
+    envVars.NEXT_PUBLIC_TENANT_API + `/api/menus/1?nested&populate=*`
+  );
+  const mainMenuData = dataFormatter.deserialize(mainMenuHandler.data);
+
+  generateStaticJson("main-menu-data.json", mainMenuData);
   generateStaticJson("news-block-articles.json", newsEntriesData);
 
   generateStaticJson("faculty-entries.json", facultyEntriesData);

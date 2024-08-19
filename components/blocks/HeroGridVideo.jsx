@@ -1,6 +1,7 @@
 import Image from "next/image";
-
+import siteConfig from "@/site.config";
 export default function Block({ block }) {
+  const { siteUrl } = siteConfig;
   return (
     <section className="p-[50px]">
       <div className="container">
@@ -34,7 +35,7 @@ export default function Block({ block }) {
                 </svg>
               </span>
               <Image
-                src="/images/cpc-cta.webp"
+                src={siteUrl + block?.Thumbnail?.url}
                 width={600}
                 height={400}
                 alt="Sample Text"
