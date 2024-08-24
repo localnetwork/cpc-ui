@@ -5,86 +5,52 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function MainMenu() {
-  const [mainMenu, setMainMenu] = globalState((state) => [
-    state.mainMenu,
-    state.setMainMenu,
-  ]);
-
-  const [shouldAnimate, setShouldAnimate] = useState(false);
-
-  useEffect(() => {
-    if (mainMenu) {
-      setShouldAnimate(true);
-    } else {
-      setShouldAnimate(false);
-    }
-  }, [mainMenu]);
+  const [mainMenu, setMainMenu] = globalState((state) => [state.mainMenu]);
 
   return (
     <div
-      className={`${
-        mainMenu ? "visible" : "invisible"
-      } fixed z-[9000] top-0 left-0 w-full h-full`}
+      className={`menu-header ${
+        mainMenu ? "menu-open" : "menu-closed"
+      } fixed z-[9000] top-0 left-0 w-full h-full bg-[#0c0f40]`}
     >
-      <motion.span
-        initial={{
-          width: "1em",
-          height: "1em",
-          transform: "translate3d(-50vh, -50vh, 0) scale(2)",
-        }}
-        animate={{
-          width: mainMenu ? "100vmax" : "1em",
-          height: mainMenu ? "100vmax" : "1em",
-          transform: mainMenu
-            ? "translate3d(-50vh, -50vh, 0) scale(2)"
-            : "translate3d(-50vh, -50vh, 0) scale(2)",
-        }}
-        transition={{
-          duration: mainMenu ? 0.5 : 1,
-          delay: mainMenu ? 0 : 1,
-        }}
-        className="bg-[#0c0f40] will-change-[width,height] rounded-full fixed z-[1] right-[-50vw] top-[-50vh] transition"
-      />
-
       <div className="relative z-[2]">
-        <AnimatePresence>
-          {shouldAnimate && (
-            <motion.div
-              key={mainMenu ? "menu-open" : "menu-close"}
-              className="sticky mb-[30px] flex justify-between top-0 pt-[30px] px-[50px]"
-              initial={{ y: -100, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -100, opacity: 0 }}
-              transition={{ delay: 1, duration: 0.5 }}
+        <div
+          key={mainMenu ? "menu-open" : "menu-close"}
+          className="sticky mb-[30px] flex justify-between top-0 pt-[30px] px-[30px]"
+        >
+          <div className="font-secondary text-[40px]">
+            <Link
+              href="/"
+              onClick={() => {
+                globalState.setState({ mainMenu: false });
+              }}
             >
-              <div className="font-secondary text-[40px]">
-                Cordova Public College
-              </div>
-              <div
-                className="flex items-center gap-[15px] font-bold cursor-pointer"
-                onClick={() => {
-                  globalState.setState({ mainMenu: false });
-                }}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-[50px] h-[50px] cursor-pointer"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-                  />
-                </svg>
-                Close
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+              Cordova Public College
+            </Link>
+          </div>
+          <div
+            className="flex items-center gap-[15px] font-bold cursor-pointer"
+            onClick={() => {
+              globalState.setState({ mainMenu: false });
+            }}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-[50px] h-[50px] cursor-pointer"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+              />
+            </svg>
+            Close
+          </div>
+        </div>
 
         <div className="flex px-[30px]">
           <div className="w-full max-w-[25%]">
@@ -105,6 +71,9 @@ export default function MainMenu() {
                         : ""
                     }`}
                     href={url || "#"}
+                    onClick={() => {
+                      globalState.setState({ mainMenu: false });
+                    }}
                   >
                     {title}
                   </Link>
@@ -117,6 +86,9 @@ export default function MainMenu() {
                             key={childIndex}
                             className="flex group items-center justify-between text-[18px] mb-[15px] pb-[15px] border-b-[1px] border-[#6469b1]"
                             href={url || "#"}
+                            onClick={() => {
+                              globalState.setState({ mainMenu: false });
+                            }}
                           >
                             {title}
                             <svg

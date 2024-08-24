@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -5,10 +7,16 @@ import Headroom from "react-headroom";
 
 import globalState from "@/lib/store/globalState";
 import MainMenu from "./Menus/MainMenu";
-export default function Header() {
+import { useRouter } from "next/router";
+
+import { disabledTypes } from "@/lib/helpers/constant";
+
+export default function Header({ ...props }) {
   const [scrolled, setScrolled] = useState(false);
   const [mainMenu] = globalState((state) => [state.mainMenu]);
   const showLazy = globalState((state) => [state.showLazy]);
+
+  const router = useRouter();
 
   const isScrolled = () => {
     const scrollPosition = window.scrollY;

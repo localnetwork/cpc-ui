@@ -43,10 +43,27 @@ body {
   font-family: "Canela", serif;
 }
 p:not(:last-of-type) {
-  margin-bottom: 1.5em;
+  margin-bottom: 1em;
 }
 @media (min-width: 1200px) {
   .container {
     @apply max-w-[1440px] mx-auto px-[15px];
   }
+}
+
+.menu-open .circle-object {
+  width: 100vmax;
+  height: 100vmax;
+  transform: translate3d(-50vh, -50vh, 0) scale(5);
+  transition-duration: 1s;
+  transition-delay: 0s;
+}
+
+.menu-open {
+  transform: translateY(0);
+  transition: all ease 0.3s;
+}
+.menu-closed {
+  transform: translateY(-300%);
+  transition: all ease 0.3s;
 }
