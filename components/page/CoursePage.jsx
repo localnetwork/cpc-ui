@@ -21,7 +21,7 @@ export default function CoursePage({ page, blocks }) {
   };
 
   const { siteUrl } = siteConfig;
-  const { Title, Description, FAQs } = page?.attributes;
+  const { Title, Description, FAQs, Subjects } = page?.attributes;
 
   return (
     <div ref={ref}>
@@ -65,18 +65,19 @@ export default function CoursePage({ page, blocks }) {
           </motion.div>
         </div>
 
-        <div className="container text-[#13100b]">
+        <div className="container text-[#13100b] px-[15px]">
           <h2 className="text-[40px] font-secondary mb-[50px]">
             About this course
           </h2>
-          <div className="" dangerouslySetInnerHTML={{ __html: Description }} />
+          <div
+            className="pb-[70px]"
+            dangerouslySetInnerHTML={{ __html: Description }}
+          />
 
           {FAQs && FAQs.length > 0 && (
             <>
-              <h2 className="text-[40px] font-secondary mt-[70px] mb-[40px]">
-                FAQs
-              </h2>
-              <div className="block pb-[30px]">
+              <h2 className="text-[40px] font-secondary mb-[40px]">FAQs</h2>
+              <div className="block pb-[70px]">
                 {FAQs.map((item, index) => {
                   return <AccordionItem key={index} item={item} />;
                 })}
@@ -84,11 +85,95 @@ export default function CoursePage({ page, blocks }) {
             </>
           )}
 
-          <h2 className="text-[40px] font-secondary mt-[70px] mb-[40px]">
-            Subjects
-          </h2>
+          {Subjects && Subjects.length > 0 && (
+            <>
+              <h2 className="text-[40px] font-secondary mb-[40px]">Subjects</h2>
 
-          <div className="pb-[40px]"></div>
+              <div className="pb-[40px]">
+                {Subjects.map((item, index) => {
+                  const { id, Semester, Year } = item;
+                  return (
+                    <div
+                      key={index}
+                      className="p-[30px] mb-[30px] bg-white border-[1px] border-[#ccc] pb-[15px]"
+                    >
+                      <div className="flex justify-between items-center mx-[-30px] mb-[30px] bg-[#1B217A] mt-[-30px] p-[30px]">
+                        <h3 className="text-[25px] text-[#f3f4f4] font-secondary">
+                          {Year}
+                        </h3>
+                        <span className="inline-block cursor-pointer bg-white rounded-full p-[5px] shadow-md">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={1.5}
+                            stroke="currentColor"
+                            className="size-6"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M12 4.5v15m7.5-7.5h-15"
+                            />
+                          </svg>
+                        </span>
+                      </div>
+
+                      <div className="grid lg:grid-cols-2 gap-[15px]">
+                        {Semester.map((subject, index) => {
+                          const { Sem, Subjects } = subject;
+                          return (
+                            <div key={index}>
+                              <h4 className="font-bold mb-[20px]">{Sem}</h4>
+                              {Subjects && Subjects.length > 0 && (
+                                <table className="border border-[#ccc] w-full">
+                                  <thead className="text-left bg-[#ddd]">
+                                    <tr>
+                                      <th className="p-[10px] border border-[#ccc]">
+                                        Subject Code
+                                      </th>
+                                      <th className="p-[10px] border border-[#ccc]">
+                                        Descriptive Title
+                                      </th>
+                                      <th className="p-[10px] border border-[#ccc]">
+                                        Units
+                                      </th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    {Subjects?.map((subjectItem, index) => {
+                                      const {
+                                        DescriptionTitle,
+                                        SubjectCode,
+                                        Units,
+                                      } = subjectItem;
+                                      return (
+                                        <tr className="hover:bg-[#F5F4F1]">
+                                          <td className="p-[10px] border">
+                                            {SubjectCode}
+                                          </td>
+                                          <td className="p-[10px] border">
+                                            {DescriptionTitle}
+                                          </td>
+                                          <td className="p-[10px] border">
+                                            {Units}
+                                          </td>
+                                        </tr>
+                                      );
+                                    })}
+                                  </tbody>
+                                </table>
+                              )}
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </>
+          )}
         </div>
       </div>
     </div>

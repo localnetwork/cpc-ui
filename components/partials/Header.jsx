@@ -47,7 +47,7 @@ export default function Header({ ...props }) {
               <Image
                 src={"/assets/logo-cpc.png"}
                 alt="Logo"
-                width={190}
+                width={60}
                 height={48}
                 className="h-[60px] w-auto"
               />

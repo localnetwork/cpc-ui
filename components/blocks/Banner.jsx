@@ -10,21 +10,6 @@ export default function Banner({ block }) {
     initial: { width: "0%", opacity: 1 },
     animate: { width: "100%", opacity: 1 },
   };
-  const pathVariants = {
-    initial: {
-      strokeDasharray: 1000,
-      strokeDashoffset: 1000,
-    },
-    animate: {
-      strokeDashoffset: 0,
-      transition: {
-        duration: 4,
-        ease: "easeInOut",
-        repeat: Infinity,
-        repeatType: "loop",
-      },
-    },
-  };
 
   return (
     <section
