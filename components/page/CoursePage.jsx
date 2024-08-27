@@ -189,6 +189,7 @@ export default function CoursePage({ page, blocks }) {
                 {Gallery.map((item, index) => {
                   return (
                     <FancyPhoto
+                      key={index}
                       options={{
                         Carousel: {
                           infinite: true,
@@ -210,7 +211,7 @@ export default function CoursePage({ page, blocks }) {
                             src={`${siteUrl}${item.url}`}
                             width={300}
                             height={300}
-                            alt={item.alternativeText}
+                            alt="Hello World"
                             className="w-full h-[200px] md:h-[250px] lg:h-[300px] xl:h-[350px] object-cover bg-[#f5f5f5]"
                           />
                           <span className="select-none translate-y-[150%] group-hover:translate-y-[0] transition inline-flex text-[14px] items-center justify-center gap-[10px] absolute text-white py-[8px] px-[20px] bottom-0 left-0 bg-[#000] bg-opacity-70 font-secondary">
