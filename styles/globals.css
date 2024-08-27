@@ -45,18 +45,8 @@ body {
 p:not(:last-of-type) {
   margin-bottom: 1em;
 }
-@media (min-width: 1200px) {
-  .container {
-    @apply max-w-[1440px] mx-auto px-[15px];
-  }
-}
-
-.menu-open .circle-object {
-  width: 100vmax;
-  height: 100vmax;
-  transform: translate3d(-50vh, -50vh, 0) scale(5);
-  transition-duration: 1s;
-  transition-delay: 0s;
+.container {
+  @apply max-w-full xl:max-w-[1440px] mx-auto px-[15px];
 }
 
 .menu-open {
@@ -64,6 +54,7 @@ p:not(:last-of-type) {
   transition: all ease 0.3s;
 }
 .menu-closed {
+  top: -300%;
   transform: translateY(-300%);
   transition: all ease 0.3s;
 }

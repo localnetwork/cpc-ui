@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 import AccordionItem from "../partials/Accordions/AccordionItem";
+import FancyPhoto from "../partials/Popup/FancyPhoto";
 
 export default function CoursePage({ page, blocks }) {
   const ref = useRef(null);
@@ -21,18 +22,20 @@ export default function CoursePage({ page, blocks }) {
   };
 
   const { siteUrl } = siteConfig;
-  const { Title, Description, FAQs, Subjects } = page?.attributes;
+  const { Title, Description, FAQs, Subjects, Gallery } = page?.attributes;
 
   return (
     <div ref={ref}>
-      <div
-        className="min-h-[500px] flex justify-center items-center text-center bg-[#0E0E0E] bg-cover bg-center relative"
-        style={{
-          backgroundImage: `url(${siteUrl}${page?.attributes?.Image?.url})`,
-        }}
-      >
+      <div className="min-h-[500px] flex justify-center items-center text-center bg-[#0E0E0E] bg-cover bg-center relative">
+        <Image
+          className="absolute top-0 left-0 w-full h-full object-cover"
+          src={`${siteUrl}${page?.attributes?.Image?.url}`}
+          width={1920}
+          height={700}
+          alt={Title}
+        />
         <Chalk />
-        <div className="container pb-[50px] relative z-[200]">
+        <div className="container pb-[50px] relative z-[200] relative">
           <h1 className="relative inline-block text-white text-[50px] font-secondary leading-[65px]">
             {Title}
             <motion.div
@@ -90,7 +93,7 @@ export default function CoursePage({ page, blocks }) {
             <>
               <h2 className="text-[40px] font-secondary mb-[40px]">Subjects</h2>
 
-              <div className="pb-[40px]">
+              <div className="pb-[40px] w-full">
                 {Subjects.map((item, index) => {
                   const { id, Semester, Year } = item;
                   return (
@@ -125,7 +128,7 @@ export default function CoursePage({ page, blocks }) {
                           const { Sem, Subjects } = subject;
                           return (
                             <div key={index}>
-                              <h4 className="font-bold mb-[20px]">{Sem}</h4>
+                              <h4 className="font-bold mb-[10px]">{Sem}</h4>
                               {Subjects && Subjects.length > 0 && (
                                 <table className="border border-[#ccc] w-full">
                                   <thead className="text-left bg-[#ddd]">
@@ -173,6 +176,63 @@ export default function CoursePage({ page, blocks }) {
                         })}
                       </div>
                     </div>
+                  );
+                })}
+              </div>
+            </>
+          )}
+
+          {Gallery && Gallery.length > 0 && (
+            <>
+              <h2 className="text-[40px] font-secondary mb-[50px]">Media</h2>
+              <div className="pb-[70px] grid 2xs:grid-cols-2 md:grid-cols-3 gap-[30px]">
+                {Gallery.map((item, index) => {
+                  return (
+                    <FancyPhoto
+                      options={{
+                        Carousel: {
+                          infinite: true,
+                        },
+                      }}
+                    >
+                      <div
+                        key={index}
+                        className="relative group bg-white p-[15px] shadow-sm "
+                      >
+                        <div
+                          className="relative overflow-hidden group-hover:cursor-pointer"
+                          data-fancybox="gallery"
+                          data-thumb={`${siteUrl}${item.url}`}
+                          href={`${siteUrl}${item.url}`}
+                          id={`fancybox-${index}`}
+                        >
+                          <Image
+                            src={`${siteUrl}${item.url}`}
+                            width={300}
+                            height={300}
+                            alt={item.alternativeText}
+                            className="w-full h-[200px] md:h-[250px] lg:h-[300px] xl:h-[350px] object-cover bg-[#f5f5f5]"
+                          />
+                          <span className="select-none translate-y-[150%] group-hover:translate-y-[0] transition inline-flex text-[14px] items-center justify-center gap-[10px] absolute text-white py-[8px] px-[20px] bottom-0 left-0 bg-[#000] bg-opacity-70 font-secondary">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              strokeWidth={1.5}
+                              stroke="currentColor"
+                              className="size-6"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607ZM10.5 7.5v6m3-3h-6"
+                              />
+                            </svg>
+                            View Photo
+                          </span>
+                        </div>
+                      </div>
+                    </FancyPhoto>
                   );
                 })}
               </div>
