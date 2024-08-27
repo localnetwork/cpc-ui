@@ -203,7 +203,8 @@ export default function CoursePage({ page, blocks }) {
                         <div
                           className="relative overflow-hidden group-hover:cursor-pointer"
                           data-fancybox="gallery"
-                          data-thumb={`${siteUrl}${item.url}`}
+                          data-thumb={`${siteUrl}${item?.formats?.thumbnail?.url}`}
+                          data-caption={item.caption}
                           href={`${siteUrl}${item.url}`}
                           id={`fancybox-${index}`}
                         >
