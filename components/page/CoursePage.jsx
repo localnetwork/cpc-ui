@@ -61,6 +61,7 @@ export default function CoursePage({ page, blocks }) {
               className="bg-[#F5F4F1] p-[5px] rounded-full"
               width={100}
               height={100}
+              alt="College Logo"
             />
           </motion.div>
         </div>
@@ -148,7 +149,10 @@ export default function CoursePage({ page, blocks }) {
                                         Units,
                                       } = subjectItem;
                                       return (
-                                        <tr className="hover:bg-[#F5F4F1]">
+                                        <tr
+                                          className="hover:bg-[#F5F4F1]"
+                                          key={index}
+                                        >
                                           <td className="p-[10px] border">
                                             {SubjectCode}
                                           </td>
