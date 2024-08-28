@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "test": "next",
     "dev": "next dev",
     "predev": "node prebuild/prebuild-dev.js",
     "prebuild": "node prebuild/prebuild-dev.js",
