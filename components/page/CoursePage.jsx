@@ -21,7 +21,7 @@ export default function CoursePage({ page, blocks }) {
     },
   };
 
-  const { siteUrl } = siteConfig;
+  const { siteUrl, siteImagePath } = siteConfig;
   const { Title, Description, FAQs, Subjects, Gallery } = page?.attributes;
 
   return (
@@ -187,6 +187,10 @@ export default function CoursePage({ page, blocks }) {
               <h2 className="text-[40px] font-secondary mb-[50px]">Media</h2>
               <div className="pb-[70px] grid 2xs:grid-cols-2 md:grid-cols-3 gap-[30px]">
                 {Gallery.map((item, index) => {
+                  // console.log(
+                  //   "imageUrl",
+                  //   `${siteImagePath}${item?.url}&w=2048`
+                  // );
                   return (
                     <FancyPhoto
                       key={index}
@@ -203,16 +207,16 @@ export default function CoursePage({ page, blocks }) {
                         <div
                           className="relative overflow-hidden group-hover:cursor-pointer"
                           data-fancybox="gallery"
-                          data-thumb={`${siteUrl}${item?.formats?.thumbnail?.url}`}
-                          data-caption={item.caption}
-                          href={`${siteUrl}${item.url}`}
+                          data-thumb={`${siteImagePath}${item?.formats?.thumbnail?.url}&w=2048`}
+                          data-caption={item?.caption}
+                          href={`${siteImagePath}${item?.url}&w=2048`}
                           id={`fancybox-${index}`}
                         >
                           <Image
                             src={`${siteUrl}${item.url}`}
                             width={300}
                             height={300}
-                            alt="Hello World"
+                            alt={item?.caption || "Hello World"}
                             className="w-full h-[200px] md:h-[250px] lg:h-[300px] xl:h-[350px] object-cover bg-[#f5f5f5]"
                           />
                           <span className="select-none translate-y-[150%] group-hover:translate-y-[0] transition inline-flex text-[14px] items-center justify-center gap-[10px] absolute text-white py-[8px] px-[20px] bottom-0 left-0 bg-[#000] bg-opacity-70 font-secondary">
