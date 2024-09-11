@@ -1,10 +1,12 @@
 import siteConfig from "@/site.config";
 import Chalk from "../icons/Chalk";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 import AccordionItem from "../partials/Accordions/AccordionItem";
 import FancyPhoto from "../partials/Popup/FancyPhoto";
+import BaseApi from "@/lib/api/_base.api";
+import CourseGallery from "../partials/Gallery/CourseGallery";
 
 export default function CoursePage({ page, blocks }) {
   const ref = useRef(null);
@@ -23,6 +25,8 @@ export default function CoursePage({ page, blocks }) {
 
   const { siteUrl, siteImagePath } = siteConfig;
   const { Title, Description, FAQs, Subjects, Gallery } = page?.attributes;
+
+  useEffect(() => {});
 
   return (
     <div ref={ref}>
@@ -182,68 +186,7 @@ export default function CoursePage({ page, blocks }) {
             </>
           )}
 
-          {Gallery && Gallery.length > 0 && (
-            <>
-              <h2 className="text-[40px] font-secondary mb-[50px]">Media</h2>
-              <div className="pb-[70px] grid 2xs:grid-cols-2 md:grid-cols-3 gap-[30px]">
-                {Gallery.map((item, index) => {
-                  // console.log(
-                  //   "imageUrl",
-                  //   `${siteImagePath}${item?.url}&w=2048`
-                  // );
-                  return (
-                    <FancyPhoto
-                      key={index}
-                      options={{
-                        Carousel: {
-                          infinite: true,
-                        },
-                      }}
-                    >
-                      <div
-                        key={index}
-                        className="relative group bg-white p-[15px] shadow-sm "
-                      >
-                        <div
-                          className="relative overflow-hidden group-hover:cursor-pointer"
-                          data-fancybox="gallery"
-                          data-thumb={`${siteImagePath}${item?.formats?.thumbnail?.url}&w=2048`}
-                          data-caption={item?.caption}
-                          href={`${siteImagePath}${item?.url}&w=2048`}
-                          id={`fancybox-${index}`}
-                        >
-                          <Image
-                            src={`${siteUrl}${item.url}`}
-                            width={300}
-                            height={300}
-                            alt={item?.caption || "Hello World"}
-                            className="w-full h-[200px] md:h-[250px] lg:h-[300px] xl:h-[350px] object-cover bg-[#f5f5f5]"
-                          />
-                          <span className="select-none translate-y-[150%] group-hover:translate-y-[0] transition inline-flex text-[14px] items-center justify-center gap-[10px] absolute text-white py-[8px] px-[20px] bottom-0 left-0 bg-[#000] bg-opacity-70 font-secondary">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              strokeWidth={1.5}
-                              stroke="currentColor"
-                              className="size-6"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607ZM10.5 7.5v6m3-3h-6"
-                              />
-                            </svg>
-                            View Photo
-                          </span>
-                        </div>
-                      </div>
-                    </FancyPhoto>
-                  );
-                })}
-              </div>
-            </>
-          )}
+          {Gallery && Gallery.length > 0 && <CourseGallery Gallery={Gallery} />}
         </div>
       </div>
     </div>

@@ -9,12 +9,17 @@ import globalState from "@/lib/store/globalState";
 import MainMenu from "./Menus/MainMenu";
 import { useRouter } from "next/router";
 
-import { disabledTypes } from "@/lib/helpers/constant";
-
+import { disabledTypes, disabledComponents } from "@/lib/helpers/constant";
+import { blockExistChecker } from "@/lib/helpers/block";
 export default function Header({ ...props }) {
   const [scrolled, setScrolled] = useState(false);
   const [mainMenu] = globalState((state) => [state.mainMenu]);
   const showLazy = globalState((state) => [state.showLazy]);
+
+  const blockFound = blockExistChecker(
+    props?.pageProps?.blocks,
+    disabledComponents
+  );
 
   const router = useRouter();
 
@@ -39,7 +44,7 @@ export default function Header({ ...props }) {
       <Headroom className={`sticky mb-[-90px] top-0 left-0 w-full z-[1000] `}>
         <header
           className={`flex flex-wrap items-center justify-between min-h-[90px] pl-[50px] ${
-            scrolled ? "bg-white shadow-md" : ""
+            scrolled || blockFound ? "bg-white shadow-md" : ""
           }`}
         >
           <div className="site-logo">
@@ -53,7 +58,7 @@ export default function Header({ ...props }) {
               />
               <span
                 className={`text-center text-[20px] font-bold ${
-                  scrolled ? "text-[#0e0e0e]" : ""
+                  scrolled || blockFound ? "text-[#0e0e0e]" : ""
                 }`}
               >
                 Cordova Public College
@@ -62,17 +67,17 @@ export default function Header({ ...props }) {
           </div>
           <div
             className={`${
-              scrolled ? "bg-[#1B217A]" : ""
+              scrolled || blockFound ? "bg-[#1B217A]" : ""
             } flex flex-wrap text-[18px] self-stretch items-center`}
           >
             <div
               className={`${
-                scrolled ? "flex" : "hidden"
+                scrolled || blockFound ? "flex" : "hidden"
               } relative group items-center py-[20px] px-[35px] h-full border-r-[#2b3180] border-r-[1px]`}
             >
               <span
                 className={`${
-                  scrolled ? "bg-[#0c0f40]" : "bg-[#1B217A]"
+                  scrolled || blockFound ? "bg-[#0c0f40]" : "bg-[#1B217A]"
                 } absolute transition-all ease-[ease] duration-[300ms] left-[22px] rounded-full group-hover:w-[calc(100%-40px)] w-[50px] h-[50px]`}
               />
               <div className="relative flex items-center gap-[15px]">
@@ -105,18 +110,18 @@ export default function Header({ ...props }) {
             >
               <span
                 className={`${
-                  scrolled ? "bg-[#0c0f40]" : "bg-[#1B217A]"
+                  scrolled || blockFound ? "bg-[#0c0f40]" : "bg-[#1B217A]"
                 } absolute transition-all ease-[ease] duration-[300ms] left-[33px] rounded-full group-hover:w-[calc(100%-40px)] w-[50px] h-[50px]`}
               />
               <div className="relative flex flex-col items-center justify-center p-[10px]">
                 <span
                   className={`${
-                    scrolled ? "bg-white" : "bg-[#f3f4f4]"
+                    scrolled || blockFound ? "bg-white" : "bg-[#f3f4f4]"
                   } h-[3px] block w-[25px] mb-[5px]`}
                 />
                 <span
                   className={`${
-                    scrolled ? "bg-white" : "bg-[#f3f4f4]"
+                    scrolled || blockFound ? "bg-white" : "bg-[#f3f4f4]"
                   } h-[3px] block w-[25px]`}
                 />
               </div>

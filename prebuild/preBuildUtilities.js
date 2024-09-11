@@ -15,7 +15,6 @@ module.exports.preBuildDevelopment = async () => {
   // Generate default Image
   const generateImage = (imageUrl, path) => {
     const file = fs.createWriteStream(path);
-    console.log("eeeee");
     https.get(imageUrl, function (response) {
       response.pipe(file);
       file.on("finish", () => {
@@ -26,7 +25,6 @@ module.exports.preBuildDevelopment = async () => {
   };
 
   [].forEach((e, i) => {
-    console.log("hello world");
     generateImage(e, `./public/image${i}.webp`);
   });
 
