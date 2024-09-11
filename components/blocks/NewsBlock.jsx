@@ -1,10 +1,20 @@
 import Image from "next/image";
 import Link from "next/link";
-// import newsEntriesData from "@/lib/prebuildScripts/static/news-block-articles.json";
 import helper from "@/lib/helpers/helper";
 import newsEntriesData from "@/prebuild/static-data/news-block-articles.json";
+
 export default function News({ block }) {
   const { timeAgo } = helper;
+
+  // Function to extract the first paragraph
+  const getFirstParagraph = (description) => {
+    if (!description) return "";
+    const tempDiv = document.createElement("div");
+    tempDiv.innerHTML = description;
+    const firstParagraph = tempDiv.querySelector("p");
+    return firstParagraph ? firstParagraph.textContent : "";
+  };
+
   return (
     <section className="py-[100px] px-[50px] bg-[#F3F4F4] text-[#1e1e1e]">
       <div className="container">
@@ -30,61 +40,39 @@ export default function News({ block }) {
 
         <div className="mt-[100px]">
           {newsEntriesData.map((item, index) => {
+            const firstParagraph = getFirstParagraph(item?.Description);
             return (
               <div
                 key={index}
-                className="border-t-[3px] border-[#ccc] py-[50px]"
+                className="border-t-[1px] border-[#ccc] py-[50px]"
               >
-                <div className="flex flex-wrap mx-[-15px] w-full">
-                  <div className="w-full max-w-[30%] flex flex-col px-[15px]">
-                    <h3 className="font-bold text-[24px] mb-2">{item.Title}</h3>
-                    <span className="text-[#939393] text-[16px] font-bold">
+                <div className="flex group flex-wrap mx-[-15px] w-full">
+                  <div className="w-full max-w-[calc(100%-409px)] flex flex-col pr-[150px] px-[15px]">
+                    <span className="text-[#808080] text-[16px] tracking-wide mb-[10px]">
                       {timeAgo(item?.publishedAt)}
                     </span>
-                    <div className="mt-[50px] font-bold ">
-                      <Link
-                        className="inline-flex items-center text-[20px] gap-[20px]"
-                        href={item?.route_url}
-                      >
-                        <span className="border border-[2px] border-[#1e1e1e] inline-block p-[10px] rounded-full group-hover:bg-[#1b1b1c]">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            strokeWidth={1.5}
-                            stroke="#1e1e1e"
-                            className="w-[25px] h-[25px] text-white"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
-                            />
-                          </svg>
-                        </span>
-                        Read More
-                      </Link>
-                    </div>
+                    <h3 className="font-bold leading-[50px] text-[30px] mb-2 relative ">
+                      <span className="bg-[linear-gradient(180deg,transparent_98.5%,#9A0C16_0)] bg-no-repeat bg-[length:0%_100%] group-hover:bg-[length:100%_100%] transition-[background-size] duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]">
+                        <Link href={item?.route_url}>{item.Title}</Link>
+                      </span>
+                    </h3>
+
+                    {/* Display the first paragraph */}
+                    <p className="mb-4">{firstParagraph}</p>
                   </div>
 
-                  <div
-                    className="w-full max-w-[45%] px-[15px]"
-                    dangerouslySetInnerHTML={{
-                      __html:
-                        item.Description.slice(0, 100) +
-                        (item.Description.length > 100 ? "..." : ""),
-                    }}
-                  />
-                  <div className="w-full max-w-[25%] px-[15px]">
-                    <Image
-                      src={
-                        process.env.NEXT_PUBLIC_TENANT_API + item?.Image?.url
-                      }
-                      width={600}
-                      height={400}
-                      alt={item.Title}
-                      className="object-cover w-full"
-                    />
+                  <div className="w-full max-w-[409px] px-[15px]">
+                    <Link href={item?.route_url}>
+                      <Image
+                        src={
+                          process.env.NEXT_PUBLIC_TENANT_API + item?.Image?.url
+                        }
+                        width={409}
+                        height={235}
+                        alt={item.Title}
+                        className="w-[409px] h-[235px] object-cover w-full"
+                      />
+                    </Link>
                   </div>
                 </div>
               </div>
