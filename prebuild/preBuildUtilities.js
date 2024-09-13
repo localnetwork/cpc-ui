@@ -50,7 +50,7 @@ module.exports.preBuildDevelopment = async () => {
   };
 
   const newsEntriesHandler = await axios.get(
-    envVars.NEXT_PUBLIC_TENANT_API + `/api/contents/entries/article?limit=4`
+    envVars.NEXT_PUBLIC_TENANT_API + `/api/contents/entries/article?limit=3`
   );
 
   const newsEntriesData = dataFormatter.deserialize(newsEntriesHandler.data);
@@ -68,10 +68,18 @@ module.exports.preBuildDevelopment = async () => {
   );
   const mainMenuData = dataFormatter.deserialize(mainMenuHandler.data);
 
+  const siteInfoHandler = await axios.get(
+    envVars.NEXT_PUBLIC_TENANT_API + `/api/site-info`
+  );
+
+  const siteInfoData = dataFormatter.deserialize(siteInfoHandler.data);
+
   generateStaticJson("main-menu-data.json", mainMenuData);
   generateStaticJson("news-block-articles.json", newsEntriesData);
 
   generateStaticJson("faculty-entries.json", facultyEntriesData);
+
+  generateStaticJson("site-info.json", siteInfoData);
 
   console.log("New Global Data Generated!");
 };

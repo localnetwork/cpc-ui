@@ -75,9 +75,9 @@ export default function Banner({ block }) {
           }}
         >
           <div className="inline-block mt-[-50px]">
-            <h1 className="font-secondary leading-normal text-[100px] text-white mb-[25px]">
+            <h2 className="font-secondary leading-normal text-[100px] text-white mb-[25px]">
               {block?.Title}
-            </h1>
+            </h2>
           </div>
         </motion.div>
         <motion.div

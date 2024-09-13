@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import helper from "@/lib/helpers/helper";
 import newsEntriesData from "@/prebuild/static-data/news-block-articles.json";
+import ChevronRight from "../icons/ChevronRight";
 
 export default function News({ block }) {
   const { timeAgo } = helper;
@@ -38,30 +39,57 @@ export default function News({ block }) {
           </div>
         </div>
 
-        <div className="mt-[100px]">
-          {newsEntriesData.map((item, index) => {
-            const firstParagraph = getFirstParagraph(item?.Description);
-            return (
-              <div
-                key={index}
-                className="border-t-[1px] border-[#ccc] py-[50px]"
-              >
-                <div className="flex group flex-wrap mx-[-15px] w-full">
-                  <div className="w-full max-w-[calc(100%-409px)] flex flex-col pr-[150px] px-[15px]">
-                    <span className="text-[#808080] text-[16px] tracking-wide mb-[10px]">
-                      {timeAgo(item?.publishedAt)}
+        <div className="mt-[100px] flex flex-wrap">
+          <div className="px-[15px] w-full max-w-[50%]">
+            <div className="bg-[#E3E5E5] flex flex-col h-full">
+              <Link href={newsEntriesData?.[0]?.route_url}>
+                <Image
+                  src={
+                    process.env.NEXT_PUBLIC_TENANT_API +
+                    newsEntriesData?.[0]?.Image?.url
+                  }
+                  width={409}
+                  height={235}
+                  alt={newsEntriesData?.[0].Title}
+                  className="h-[415px] object-cover w-full"
+                />
+              </Link>
+              <div className="p-[30px] flex flex-col grow">
+                <span className="text-[#808080] text-[16px] tracking-wide mb-[10px]">
+                  {timeAgo(newsEntriesData?.[0]?.publishedAt)}
+                </span>
+                <h3 className="font-bold leading-[50px] text-[30px] mb-2 relative ">
+                  <span className="bg-[linear-gradient(180deg,transparent_98.5%,#9A0C16_0)] bg-no-repeat bg-[length:0%_100%] group-hover:bg-[length:100%_100%] transition-[background-size] duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]">
+                    <Link href={newsEntriesData?.[0]?.route_url}>
+                      {newsEntriesData?.[0].Title}
+                    </Link>
+                  </span>
+                </h3>
+
+                <p className="mb-4">
+                  {getFirstParagraph(newsEntriesData?.[0].Description)}
+                </p>
+
+                <div className="pt-[30px] mt-auto">
+                  <Link
+                    className="inline-flex items-center gap-[15px] font-bold"
+                    href={newsEntriesData?.[0].route_url}
+                  >
+                    <span className="bg-[#9A0C16] rounded-full flex items-center justify-center w-[50px] h-[50px]">
+                      <ChevronRight color="#fff" width={30} height={30} />
                     </span>
-                    <h3 className="font-bold leading-[50px] text-[30px] mb-2 relative ">
-                      <span className="bg-[linear-gradient(180deg,transparent_98.5%,#9A0C16_0)] bg-no-repeat bg-[length:0%_100%] group-hover:bg-[length:100%_100%] transition-[background-size] duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]">
-                        <Link href={item?.route_url}>{item.Title}</Link>
-                      </span>
-                    </h3>
-
-                    {/* Display the first paragraph */}
-                    <p className="mb-4">{firstParagraph}</p>
-                  </div>
-
-                  <div className="w-full max-w-[409px] px-[15px]">
+                    Read Article
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="px-[15px] flex flex-col gap-[15px] w-full max-w-[50%]">
+            {newsEntriesData.map((item, index) => {
+              const firstParagraph = getFirstParagraph(item?.Description);
+              if (index > 0) {
+                return (
+                  <div className="bg-[#E3E5E5]" key={index}>
                     <Link href={item?.route_url}>
                       <Image
                         src={
@@ -70,14 +98,36 @@ export default function News({ block }) {
                         width={409}
                         height={235}
                         alt={item.Title}
-                        className="w-[409px] h-[235px] object-cover w-full"
+                        className="h-[250px] object-cover w-full"
                       />
                     </Link>
+                    <div className="p-[20px]">
+                      <span className="text-[#808080] text-[14px] tracking-wide mb-[10px]">
+                        {timeAgo(item?.publishedAt)}
+                      </span>
+                      <h3 className="font-bold leading-[32px] text-[23px] mb-2 relative ">
+                        <span className="bg-[linear-gradient(180deg,transparent_98.5%,#9A0C16_0)] bg-no-repeat bg-[length:0%_100%] group-hover:bg-[length:100%_100%] transition-[background-size] duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]">
+                          <Link href={item?.route_url}>{item.Title}</Link>
+                        </span>
+                      </h3>
+
+                      <div className="mt-[30px]">
+                        <Link
+                          className="inline-flex text-[14px] items-center gap-[15px] font-bold"
+                          href={item.route_url}
+                        >
+                          <span className="bg-[#9A0C16] p-[8px] rounded-full flex items-center justify-center w-[35px] h-[35px]">
+                            <ChevronRight color="#fff" width={15} height={15} />
+                          </span>
+                          Read Article
+                        </Link>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            );
-          })}
+                );
+              }
+            })}
+          </div>
         </div>
       </div>
     </section>

@@ -23,6 +23,7 @@
     "react": "^18",
     "react-dom": "^18",
     "react-headroom": "^3.2.1",
+    "sharethis-reactjs": "^1.6.0",
     "sharp": "^0.33.5",
     "swr": "^2.2.5",
     "zustand": "^4.5.5"
