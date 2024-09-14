@@ -58,3 +58,13 @@ p:not(:last-of-type) {
   transform: translateY(-300%);
   transition: all ease 0.3s;
 }
+
+.st-label {
+  @apply text-[0px] !hidden;
+}
+.st-inline-share-buttons {
+  @apply !flex items-center justify-center;
+}
+.st-inline-share-buttons .st-btn {
+  @apply !min-w-[45px] max-w-[45px] !block;
+}

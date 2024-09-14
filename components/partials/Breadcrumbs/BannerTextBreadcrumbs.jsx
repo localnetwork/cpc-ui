@@ -1,10 +1,15 @@
 import { useRouter } from "next/router";
 import Link from "next/link";
 import ChevronRight from "@/components/icons/ChevronRight";
+import helper from "@/lib/helpers/helper";
 
-export default function BannerTextBreadcrumbs({ page }) {
+export default function BannerTextBreadcrumbs({ color, page }) {
   const router = useRouter();
   const { asPath } = router;
+
+  const { colorExtractor } = helper;
+
+  const extractedColor = colorExtractor(color);
 
   // Split the asPath into an array of paths, filtering out any empty strings
   const pathSegments = asPath.split("/").filter((segment) => segment);
@@ -12,7 +17,7 @@ export default function BannerTextBreadcrumbs({ page }) {
   return (
     <nav
       aria-label="breadcrumb"
-      className="border-y-[1px] border-[#b1863d] mt-[-70px] text-[25px] py-[30px]"
+      className={`border-y-[1px] border-[#b1863d] mt-[-70px] text-[25px] py-[30px] text-[${extractedColor?.textColor}]`}
     >
       <div className="container">
         <ol className="breadcrumb flex">

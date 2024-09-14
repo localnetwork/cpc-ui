@@ -12,7 +12,7 @@ import helper from "@/lib/helpers/helper";
  * @returns {JSX.Element} Component with background color, title, and breadcrumbs.
  */
 export default function PageBannerText({ page, block }) {
-  const { Title, Color, showBreadcrumbs, Description } = block;
+  const { Title, Color, Description, ShowBreadcrumbs } = block;
 
   const { colorExtractor } = helper;
 
@@ -29,7 +29,7 @@ export default function PageBannerText({ page, block }) {
         </h2>
         {Description && <p className="text-center">{Description}</p>}
       </div>
-      {showBreadcrumbs && <BannerTextBreadcrumbs page={page} />}
+      {ShowBreadcrumbs && <BannerTextBreadcrumbs color={Color} page={page} />}
     </section>
   );
 }

@@ -39,7 +39,7 @@ export default function News({ block }) {
           </div>
         </div>
 
-        <div className="mt-[100px] flex flex-wrap">
+        <div className="mt-[100px] flex flex-wrap mx-[-15px]">
           <div className="px-[15px] w-full max-w-[50%]">
             <div className="bg-[#E3E5E5] flex flex-col h-full">
               <Link href={newsEntriesData?.[0]?.route_url}>
