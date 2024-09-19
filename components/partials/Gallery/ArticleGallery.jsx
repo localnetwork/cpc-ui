@@ -11,6 +11,8 @@ import "swiper/css";
 export default function ArticleGallery({ Gallery }) {
   const { siteUrl, siteImagePath } = siteConfig;
 
+  const [currentIndex, setCurrentIndex] = useState(3);
+
   return (
     <>
       <FancyPhoto
@@ -20,9 +22,16 @@ export default function ArticleGallery({ Gallery }) {
           },
         }}
       >
+        <div className="text-black">
+          {currentIndex} / {Gallery.length}
+        </div>
         <Swiper
           slidesPerView={3}
-          onSlideChange={() => console.log("slide change")}
+          onSlideChange={(swiperCore) => {
+            const { activeIndex, snapIndex, previousIndex, realIndex } =
+              swiperCore;
+            setCurrentIndex(activeIndex + 3);
+          }}
           onSwiper={(swiper) => console.log(swiper)}
         >
           {Gallery.map((item, index) => {

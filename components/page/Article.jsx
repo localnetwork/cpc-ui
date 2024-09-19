@@ -37,7 +37,7 @@ export default function Article({ page }) {
                 width={1200}
                 height={600}
                 alt={page?.attributes?.Title}
-                className=" object-cover"
+                className=" object-cover h-full"
                 placeholder="blur"
                 blurDataURL={`${siteImagePath}${page?.attributes?.Image?.url}&w=10`}
               />
