@@ -11,7 +11,7 @@ export default function Block({ block }) {
             AllnewsEntriesData.map((item, index) => {
               if (index > 3) {
                 return (
-                  <div className="group space-y-4">
+                  <div className="group space-y-4" key={index}>
                     <Link
                       className="relative block aspect-landscape w-full overflow-hidden
             rounded-2xl bg-primary-1"
@@ -21,6 +21,7 @@ export default function Block({ block }) {
                         src={siteConfig?.siteUrl + item.Image.url}
                         width={500}
                         height={500}
+                        alt={item?.Title}
                         className="absolute h-full w-full object-cover transition-all duration-500 group-hover:scale-105"
                       />
                     </Link>

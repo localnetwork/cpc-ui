@@ -43,7 +43,10 @@ export default function Block({ block }) {
           <div className="space-y-5 md:space-y-10 lg:col-span-2">
             {AllnewsEntriesData?.length > 0 &&
               AllnewsEntriesData.slice(1, 4).map((item, index) => (
-                <div className="grid group grid-cols-3 items-center gap-5 md:gap-10">
+                <div
+                  className="grid group grid-cols-3 items-center gap-5 md:gap-10"
+                  key={index}
+                >
                   <div className="relative flex items-center">
                     <Link
                       className="relative aspect-landscape flex-grow overflow-hidden rounded-xl bg-primary-1"
@@ -53,6 +56,7 @@ export default function Block({ block }) {
                         src={siteConfig.siteUrl + item?.Image?.url}
                         width={500}
                         height={500}
+                        alt={item?.Title}
                         className="absolute duration-500 group-hover:scale-105 inset-0 h-full w-full object-cover "
                       />
                     </Link>

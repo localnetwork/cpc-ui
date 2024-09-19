@@ -50,6 +50,7 @@ export default function ArticleGallery({ Gallery }) {
                     className="w-full h-[400px] object-cover"
                     width={700}
                     height={700}
+                    alt={item?.caption || "Hello World"}
                   />
                 </div>
               </SwiperSlide>
