@@ -45,7 +45,7 @@ export default function Article({ page }) {
           </div>
         </div>
         <div className="max-w-[944px] pb-[50px] mx-auto px-[15px] relative">
-          <div className="flex items-center justify-between mt-[20px]">
+          <div className="flex items-center justify-between mt-[20px] z-[1] relative">
             <span className=" block text-[14px] text-[#a1a1a1]">
               Date posted: {helper.timeAgo(page?.attributes?.publishedAt)}
             </span>

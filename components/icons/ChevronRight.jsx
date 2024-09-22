@@ -8,7 +8,7 @@ export default function ChevronRight({ width, height, color, className }) {
       stroke={color || "#0e0e0e"}
       width={width || "24"}
       height={height || "24"}
-      className={className || "size-6"}
+      className={className}
     >
       <path
         strokeLinecap="round"

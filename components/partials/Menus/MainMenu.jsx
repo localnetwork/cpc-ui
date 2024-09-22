@@ -52,11 +52,24 @@ export default function MainMenu() {
           </div>
         </div>
 
-        <div className="flex px-[30px]">
-          <div className="w-full max-w-[25%]">
-            <h2>Follow Us</h2>
+        <div className="flex px-[30px] mx-[-30px]">
+          <div className="w-full max-w-[25%] px-[30px]">
+            <h2 className="font-secondary text-[30px] leading-[45px]">
+              Preparing for Success at Cordova Public College.
+            </h2>
+            <div className="mt-[60px]">
+              <Link
+                href="#"
+                onClick={() => {
+                  globalState.setState({ mainMenu: false });
+                }}
+                className="bg-[#2b3180] tracking-wider font-bold rounded-full w-[150px] h-[150px] flex items-center justify-center p-[10px]"
+              >
+                Join Us
+              </Link>
+            </div>
           </div>
-          <div className="columns-2 gap-[50px] w-3/4 custom-column-avoid">
+          <div className="columns-2 gap-[50px] px-[30px] w-3/4 custom-column-avoid">
             {mainMenuData?.items?.data?.map((item, index) => {
               const { title, url, children } = item?.attributes;
               return (

@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 export default function Block({ block }) {
   const { Title } = block;
-  console.log("AllnewsEntriesData", AllnewsEntriesData[0]?.Title);
   return (
     <section className="min-h-[60vh] bg-black pt-[150px] pb-[100px]">
       <div className="container">

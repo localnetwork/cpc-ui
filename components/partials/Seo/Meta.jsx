@@ -1,9 +1,7 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
 export default function Meta({ metaImage, page }) {
-  const [hostUrl, setHostUrl] = useState("");
   const [currentUrl, setCurrentUrl] = useState("");
-
   let metaImg = {
     url: metaImage || "/images/logo.png",
   };
@@ -12,7 +10,9 @@ export default function Meta({ metaImage, page }) {
   const { Description } = page?.attributes?.Metatags || "";
 
   const findTitle = () => {
-    return Title;
+    return page?.route_url == "/home"
+      ? Title
+      : Title + " - Cordova Public College";
   };
 
   /**
@@ -21,11 +21,10 @@ export default function Meta({ metaImage, page }) {
    * @returns {string|null}
    */
   const findImage = () => {
-    return `${hostUrl}${metaImg?.url}`;
+    return `${process.env.NEXT_PUBLIC_FRONTEND_URL}${metaImg?.url}`;
   };
 
   useEffect(() => {
-    setHostUrl(window.location.origin);
     setCurrentUrl(window.location.href);
     findImage();
   }, []);
@@ -45,12 +44,8 @@ export default function Meta({ metaImage, page }) {
         property="article:modified_time"
         content={page?.attributes?.publishedAt}
       />
-      {hostUrl && (
-        <>
-          <meta name="og:image" content={findImage()} />
-          <meta name="twitter:image" content={findImage()} />
-        </>
-      )}
+      <meta name="og:image" content={findImage()} />
+      <meta name="twitter:image" content={findImage()} />
 
       {currentUrl && (
         <>

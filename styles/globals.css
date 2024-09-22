@@ -72,3 +72,7 @@ p:not(:last-of-type) {
 .aspect-landscape {
   aspect-ratio: 4 / 3;
 }
+
+.swiper-pagination-bullet-active {
+  @apply !bg-[#1B217A] scale-[1.5];
+}

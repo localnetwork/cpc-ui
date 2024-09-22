@@ -20,6 +20,7 @@
     "https": "^1.0.0",
     "jsona": "^1.12.1",
     "next": "14.2.5",
+    "nextjs-toploader": "^3.6.15",
     "react": "^18",
     "react-dom": "^18",
     "react-headroom": "^3.2.1",

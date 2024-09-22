@@ -76,13 +76,19 @@ module.exports.preBuildDevelopment = async () => {
   );
   const mainMenuData = dataFormatter.deserialize(mainMenuHandler.data);
 
+  const quickLinksHandler = await axios.get(
+    envVars.NEXT_PUBLIC_TENANT_API + `/api/menus/2?nested&populate=*`
+  );
+  const quickLinksData = dataFormatter.deserialize(quickLinksHandler.data);
+
   const siteInfoHandler = await axios.get(
-    envVars.NEXT_PUBLIC_TENANT_API + `/api/site-info`
+    envVars.NEXT_PUBLIC_TENANT_API + `/api/site-info?populate=deep`
   );
 
   const siteInfoData = dataFormatter.deserialize(siteInfoHandler.data);
 
   generateStaticJson("main-menu-data.json", mainMenuData);
+  generateStaticJson("quick-links-data.json", quickLinksData);
   generateStaticJson("news-block-articles.json", newsEntriesData);
 
   generateStaticJson("faculty-entries.json", facultyEntriesData);
