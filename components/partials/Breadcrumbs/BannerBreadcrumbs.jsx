@@ -7,7 +7,6 @@ export default function BannerBreadcrumbs() {
 
   // Split the asPath into an array of paths, filtering out any empty strings
   const pathSegments = asPath.split("/").filter((segment) => segment);
-
   return (
     <nav aria-label="breadcrumb">
       <ol className="breadcrumb flex">

@@ -13,7 +13,6 @@ export default function BannerTextBreadcrumbs({ color, page }) {
 
   // Split the asPath into an array of paths, filtering out any empty strings
   const pathSegments = asPath.split("/").filter((segment) => segment);
-
   return (
     <nav
       aria-label="breadcrumb"
@@ -49,9 +48,7 @@ export default function BannerTextBreadcrumbs({ color, page }) {
                   <>{segmentName}</>
                 ) : (
                   <>
-                    <Link href={pathToSegment}>
-                      {page.attributes.Title || segmentName}
-                    </Link>
+                    <Link href={pathToSegment}>{segmentName}</Link>
                     <span className="mx-[15px] rounded-full p-[5px] flex items-center justify-center w-[25px] h-[25px] bg-[#9A0C16]">
                       <ChevronRight color="#fff" />
                     </span>

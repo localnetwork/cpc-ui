@@ -15,12 +15,12 @@ export default function BackTop() {
   });
   return (
     <div
-      className={`hover:opacity-[.8] bottom-[30px] right-[30px] transition duration-300 fixed z-[100] ${
+      className={`hover:opacity-[.9] focus:opacity-[.8] bottom-[30px] right-[30px] transition duration-300 fixed z-[100] ${
         currentOffset > 300 ? "visible opacity-1" : "invisible !opacity-0"
       }`}
       onClick={scrollTop}
     >
-      <span className="bg-[#9A0C16] border border-[#ff9aa2] cursor-pointer rounded-md flex items-center justify-center w-[60px] h-[60px]">
+      <span className="bg-[#9A0C16] border border-[#ff9aa2] cursor-pointer rounded-sm flex items-center justify-center w-[60px] h-[60px]">
         <ChevronRight
           color="#fff"
           width={35}

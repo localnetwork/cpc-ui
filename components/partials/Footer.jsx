@@ -6,13 +6,11 @@ import quickLinksData from "@/prebuild/static-data/quick-links-data";
 export default function Footer() {
   const { Address, Email, Phone, social_links } = siteInfoData;
 
-  console.log("quickLinksData", quickLinksData?.items?.data);
-
   const currentYear = new Date().getFullYear();
   return (
-    <footer className="bg-black py-[100px] px-[50px] text-[#808080]">
+    <footer className="bg-black py-[100px] text-[#808080] border-[#242424] border-t-[1px]">
       <div className="container">
-        <div className="grid grid-cols-3 gap-x-[50px]">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-[50px]">
           {quickLinksData?.items?.data && (
             <div className="">
               <h2 className="text-[#f3f4f4] text-[22px] font-bold">
@@ -44,7 +42,7 @@ export default function Footer() {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="size-6 mr-1"
+                className="min-w-[24px] min-h-[24px] w-[24px] mr-1"
               >
                 <path
                   strokeLinecap="round"
@@ -67,7 +65,7 @@ export default function Footer() {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="size-6 mr-1"
+                className="min-w-[24px] min-h-[24px] w-[24px] mr-1"
               >
                 <path
                   strokeLinecap="round"
@@ -85,7 +83,7 @@ export default function Footer() {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="size-6 mr-1"
+                className="min-w-[24px] min-h-[24px] w-[24px] mr-1"
               >
                 <path
                   strokeLinecap="round"
@@ -103,11 +101,11 @@ export default function Footer() {
               <FooterSocial social_links={social_links} />
             </div>
           </div>
-          <div>
+          <div className="col-span-3 lg:col-span-1">
             <h2 className="text-[#f3f4f4] text-[22px] font-bold mb-[30px]">
               Location
             </h2>
-            <div>
+            <div className="bg-[#161616]">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3925.9875102641854!2d123.95840707512374!3d10.262589468461082!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33a99af5762be06f%3A0xd4bee3697d587b49!2sCordova%20Public%20College!5e0!3m2!1sen!2sph!4v1723565062077!5m2!1sen!2sph"
                 width="600"
