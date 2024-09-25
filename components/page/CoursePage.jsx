@@ -103,7 +103,7 @@ export default function CoursePage({ page, blocks }) {
                   return (
                     <div
                       key={index}
-                      className="p-[30px] mb-[30px] bg-white border-[1px] border-[#ccc] pb-[15px]"
+                      className="p-[30px] mb-[30px] bg-white border-[1px] border-[#ccc] pb-[30px]"
                     >
                       <div className="flex justify-between items-center mx-[-30px] mb-[30px] bg-[#1B217A] mt-[-30px] p-[30px]">
                         <h3 className="text-[25px] text-[#f3f4f4] font-secondary">
