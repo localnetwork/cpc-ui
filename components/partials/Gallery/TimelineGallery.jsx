@@ -17,7 +17,7 @@ export default function TimelineGallery({ gallery }) {
         {gallery.map((item, index) => {
           const isOdd = helper.isOdd(index);
           return (
-            <SwiperSlide>
+            <SwiperSlide key={index}>
               <div
                 className={`p-[10px] border-[5px] border-[#222222] ${
                   isOdd ? "mt-[30px]" : ""
