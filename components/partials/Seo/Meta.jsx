@@ -35,6 +35,7 @@ export default function Meta({ metaImage, page }) {
       <meta name="og:title" content={findTitle()} />
       <meta name="description" content={Description} />
       <meta name="og:description" content={Description} />
+      <link rel="icon" href="/favicon.png" />
 
       <meta
         property="article:published_time"
