@@ -25,6 +25,29 @@
     url("/fonts/GT-America-Standard-Bold.woff") format("woff");
   font-weight: 700;
 }
+
+@font-face {
+  font-family: "Recoleta";
+  src: url("/fonts/recoleta/recoleta-black.woff2");
+  font-weight: 900;
+}
+@font-face {
+  font-family: "Recoleta";
+  src: url("/fonts/recoleta/recoleta-bold.woff2");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Recoleta";
+  src: url("/fonts/recoleta/recoleta-light.woff2");
+  font-weight: 300;
+}
+@font-face {
+  font-family: "Recoleta";
+  src: url("/fonts/recoleta/recoleta-regular.woff2");
+  font-weight: 400;
+}
+
 body {
   color: #fff;
   font-size: 18px;

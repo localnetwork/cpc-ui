@@ -17,10 +17,10 @@ export default function News({ block }) {
   };
 
   return (
-    <section className="py-[100px] px-[50px] bg-[#F3F4F4] text-[#1e1e1e]">
+    <section className="py-[30px] md:py-[50px] lg:py-[100px] px-[15px] md:px-[30px] lg:px-[50px] bg-[#F3F4F4] text-[#1e1e1e]">
       <div className="container">
-        <div className="flex items-center justify-between">
-          <h2 className="font-secondary leading-normal text-[80px] mb-[25px]">
+        <div className="flex mb-[30px] md:mb-0 flex-col gap-y-[10px] md:flex-row md:items-center justify-between">
+          <h2 className="font-secondary leading-normal text-[80px] md:mb-[25px]">
             {block?.Title}
           </h2>
           <div>
@@ -39,8 +39,8 @@ export default function News({ block }) {
           </div>
         </div>
 
-        <div className="mt-[100px] flex flex-wrap mx-[-15px]">
-          <div className="px-[15px] w-full max-w-[50%]">
+        <div className="lg:mt-[100px] gap-y-[15px] flex flex-wrap mx-[-15px]">
+          <div className="px-[15px] w-full md:max-w-[50%]">
             <div className="bg-[#E3E5E5] flex flex-col h-full">
               <Link href={newsEntriesData?.[0]?.route_url}>
                 <Image
@@ -84,7 +84,7 @@ export default function News({ block }) {
               </div>
             </div>
           </div>
-          <div className="px-[15px] flex flex-col gap-[15px] w-full max-w-[50%]">
+          <div className="px-[15px] flex flex-col gap-[15px] w-full md:max-w-[50%]">
             {newsEntriesData.map((item, index) => {
               const firstParagraph = getFirstParagraph(item?.Description);
               if (index > 0) {

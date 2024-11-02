@@ -6,10 +6,10 @@ export default function Block({ block }) {
   const { Title, Description, Thumbnail, Video } = block;
 
   return (
-    <section className="p-[50px]">
+    <section className="px-[15px] py-[50px] md:p-[30px] lg:p-[50px]">
       <div className="container">
-        <div className="flex flex-wrap mx-[-30px] justify-between items-center">
-          <div className="px-[30px] max-w-[50%] w-full">
+        <div className="flex flex-wrap gap-y-[15px] md:flex-row mx-[-30px] justify-between items-center">
+          <div className="px-[15px] md:px-[30px] lg:max-w-[50%] w-full">
             <h2 className="text-[48px] font-secondary mb-[30px] leading-[65px]">
               {Title}
             </h2>
@@ -20,7 +20,7 @@ export default function Block({ block }) {
           </div>
           <Fancybox>
             <div
-              className="px-[30px] max-w-[50%] w-full relative group"
+              className="order-[-1] md:order-[1] px-[15px] md:px-[30px] lg:max-w-[50%] w-full relative group"
               data-fancybox="video-gallery"
               href={Video}
             >

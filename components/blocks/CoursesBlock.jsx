@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 export default function Courses({ block }) {
   return (
-    <section className="py-[100px] px-[50px]">
+    <section className="py-[30px] md:py-[50px] lg:py-[100px] px-[15px] md:px-[30px] lg:px-[50px]">
       <div className="container">
         <h2 className="font-secondary leading-normal text-[80px] text-white mb-[25px]">
           Courses

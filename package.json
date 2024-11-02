@@ -25,6 +25,7 @@
     "react": "^18",
     "react-dom": "^18",
     "react-headroom": "^3.2.1",
+    "react-super-responsive-table": "^6.0.0",
     "sharethis-reactjs": "^1.6.0",
     "sharp": "^0.33.5",
     "swiper": "^11.1.14",

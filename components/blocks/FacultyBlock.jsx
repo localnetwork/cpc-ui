@@ -15,7 +15,7 @@ export default function Faculty({ block }) {
   };
 
   return (
-    <section className="py-[100px] px-[50px]">
+    <section className="py-[30px] md:py-[50px] lg:py-[100px] px-[15px] md:px-[30px] lg:px-[50px]">
       <div className="container">
         <h2 className="font-secondary leading-normal text-[80px] mb-[25px]">
           {block?.Title}
@@ -32,17 +32,20 @@ export default function Faculty({ block }) {
               },
             },
           }}
-          className="grid grid-cols-3 gap-x-[50px] gap-y-[100px]"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-[50px] gap-y-[30px] md:gap-[50px] lg:gap-y-[100px]"
         >
           {facultyEntriesData.map((item, index) => (
             <motion.div key={index} variants={fadeInUp}>
-              <Image
-                className="w-full h-[550px] object-cover"
-                src={siteUrl + item.Image?.url}
-                width={500}
-                height={500}
-                alt={item.Name}
-              />
+              <div className="relative">
+                <span className="pb-[125%] block" />
+                <Image
+                  className="w-full h-full absolute left-0 top-0 object-cover"
+                  src={siteUrl + item.Image?.url}
+                  width={500}
+                  height={500}
+                  alt={item.Name}
+                />
+              </div>
               <h3 className="font-secondary mt-[30px] leading-normal text-[30px] mb-[15px]">
                 {item.Name}
               </h3>

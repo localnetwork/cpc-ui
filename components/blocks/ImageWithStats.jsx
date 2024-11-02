@@ -5,7 +5,7 @@ import Image from "next/image";
 
 const StatItem = ({ item }) => {
   return (
-    <motion.div className="my-[50px] text-center">
+    <motion.div className="my-[15px] lg:my-[50px] text-center">
       <h2 className="leading-normal text-[#1B217A] font-secondary text-[60px]">
         {item.Value}
       </h2>
@@ -36,7 +36,7 @@ export default function ImageWithStats({ block }) {
         </div>
         {Stats && (
           <>
-            <div className="grid grid-cols-4 gap-[30px]">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-[30px]">
               {Stats.map((item, index) => (
                 <StatItem key={index} item={item} />
               ))}

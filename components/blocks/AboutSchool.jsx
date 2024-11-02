@@ -23,7 +23,7 @@ export default function Block({ block }) {
   return (
     <section
       ref={ref}
-      className="bg-[#F5F4F1] px-[50px] py-[100px] text-[#13100b]"
+      className="bg-[#F5F4F1] px-[15px] md:px-[30px] lg:px-[50px] py-[30px] md:py-[50px] lg:py-[100px] text-[#13100b]"
     >
       <div className="container text-center">
         <Chalk />
@@ -43,7 +43,7 @@ export default function Block({ block }) {
           />
         </motion.div>
         <div className="relative inline-block mb-[50px]">
-          <h2 className="text-[40px] font-secondary mb-[20px]">
+          <h2 className="text-[40px] leading-[100%] font-secondary mb-[20px]">
             {block?.Title}
           </h2>
           <motion.div

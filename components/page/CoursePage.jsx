@@ -8,6 +8,10 @@ import FancyPhoto from "../partials/Popup/FancyPhoto";
 import BaseApi from "@/lib/api/_base.api";
 import CourseGallery from "../partials/Gallery/CourseGallery";
 
+import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
+
+import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
+
 export default function CoursePage({ page, blocks }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-10%" });
@@ -134,21 +138,21 @@ export default function CoursePage({ page, blocks }) {
                             <div key={index}>
                               <h4 className="font-bold mb-[10px]">{Sem}</h4>
                               {Subjects && Subjects.length > 0 && (
-                                <table className="border border-[#ccc] w-full">
-                                  <thead className="text-left bg-[#ddd]">
-                                    <tr>
-                                      <th className="p-[10px] border border-[#ccc]">
+                                <Table className="border border-[#ccc] w-full">
+                                  <Thead className="text-left bg-[#ddd]">
+                                    <Tr>
+                                      <Th className="p-[10px] border border-[#ccc]">
                                         Subject Code
-                                      </th>
-                                      <th className="p-[10px] border border-[#ccc]">
+                                      </Th>
+                                      <Th className="p-[10px] border border-[#ccc]">
                                         Descriptive Title
-                                      </th>
-                                      <th className="p-[10px] border border-[#ccc]">
+                                      </Th>
+                                      <Th className="p-[10px] border border-[#ccc]">
                                         Units
-                                      </th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
+                                      </Th>
+                                    </Tr>
+                                  </Thead>
+                                  <Tbody>
                                     {Subjects?.map((subjectItem, index) => {
                                       const {
                                         DescriptionTitle,
@@ -156,24 +160,24 @@ export default function CoursePage({ page, blocks }) {
                                         Units,
                                       } = subjectItem;
                                       return (
-                                        <tr
+                                        <Tr
                                           className="hover:bg-[#F5F4F1]"
                                           key={index}
                                         >
-                                          <td className="p-[10px] border">
+                                          <Td className="p-[10px] border">
                                             {SubjectCode}
-                                          </td>
-                                          <td className="p-[10px] border">
+                                          </Td>
+                                          <Td className="p-[10px] border">
                                             {DescriptionTitle}
-                                          </td>
-                                          <td className="p-[10px] border">
+                                          </Td>
+                                          <Td className="p-[10px] border">
                                             {Units}
-                                          </td>
-                                        </tr>
+                                          </Td>
+                                        </Tr>
                                       );
                                     })}
-                                  </tbody>
-                                </table>
+                                  </Tbody>
+                                </Table>
                               )}
                             </div>
                           );

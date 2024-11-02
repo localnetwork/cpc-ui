@@ -56,10 +56,10 @@ export default function Block({ block }) {
             {Title}
           </motion.h2>
         )}
-        <div className="grid items-center grid-cols-2 gap-[50px]">
+        <div className="grid items-center grid-cols-1 md:grid-cols-2 gap-[50px]">
           <motion.div
             ref={refImage}
-            className="min-h-[450px]"
+            className="min-h-[250px] md:min-h-[450px]"
             variants={fadeInLeft}
             initial="hidden"
             animate={inViewImage ? "visible" : "hidden"}
@@ -68,7 +68,7 @@ export default function Block({ block }) {
               src={siteConfig.siteUrl + Media.url}
               width={1200}
               height={600}
-              className="min-h-[450px] object-cover"
+              className="min-h-[250px] md:min-h-[450px] object-cover"
             />
           </motion.div>
           <motion.div

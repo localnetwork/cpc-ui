@@ -2,26 +2,29 @@ import Image from "next/image";
 
 export default function Block({ block }) {
   return (
-    <section className="bg-black px-[50px] pb-[30px]">
+    <section className="bg-black px-[15px] md:px-[30px] lg:px-[50px] pb-[30px]">
       <div className="container">
-        <div className="flex flex-wrap mx-[-30px] justify-between">
+        <div className="flex flex-col lg:flex-row flex-wrap mx-[-30px] justify-between">
           {block?.Items.map((item, index) => {
             const removeLastWord = item.Title.split(" ").slice(0, -1).join(" ");
             const lastWord = item.Title.split(" ").pop();
             return (
-              <div key={index} className="max-w-[33.33%] px-[15px] w-full">
+              <div key={index} className="lg:max-w-[33.33%] px-[15px] w-full">
                 <div
-                  className={`${
+                  className={` ${
                     index == 1 ? "h-[calc(100%+30px)]" : "h-full"
                   } flex flex-col`}
                 >
-                  <Image
-                    src={process.env.NEXT_PUBLIC_TENANT_API + item.Image?.url}
-                    className="w-full flex h-[283px] object-cover bg-[#f3f4f4]"
-                    width={500}
-                    height={300}
-                    alt="Sample Text"
-                  />
+                  <div className="relative">
+                    <span className="pb-[56.65%] block bg-[#333]" />
+                    <Image
+                      src={process.env.NEXT_PUBLIC_TENANT_API + item.Image?.url}
+                      className="w-full absolute top-0 left-0 h-full object-cover bg-[#f3f4f4]"
+                      width={500}
+                      height={300}
+                      alt="Sample Text"
+                    />
+                  </div>
 
                   <div
                     className="p-[30px] grow"

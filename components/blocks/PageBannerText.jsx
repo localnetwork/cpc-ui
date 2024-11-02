@@ -24,7 +24,7 @@ export default function PageBannerText({ page, block }) {
       <div
         className={`container grow flex items-center justify-center text-[${extractedColor.textColor}]`}
       >
-        <h2 className=" text-[80px] font-secondary text-center mb-[20px]">
+        <h2 className=" text-[80px] leading-[100%] font-secondary text-center mb-[20px]">
           {Title}
         </h2>
         {Description && <p className="text-center">{Description}</p>}

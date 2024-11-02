@@ -57,7 +57,7 @@ export default function Header({ ...props }) {
                 className="h-[60px] w-auto"
               />
               <span
-                className={`text-center text-[20px] font-bold ${
+                className={`hidden lg:block text-center text-[20px] font-bold ${
                   scrolled || blockFound ? "text-[#0e0e0e]" : ""
                 }`}
               >
@@ -71,9 +71,9 @@ export default function Header({ ...props }) {
             } flex flex-wrap text-[18px] self-stretch items-center`}
           >
             <div
-              className={`${
-                scrolled || blockFound ? "flex" : "hidden"
-              } relative group items-center py-[20px] px-[35px] h-full border-r-[#2b3180] border-r-[1px]`}
+              className={` ${
+                scrolled || blockFound ? "!flex" : "hidden"
+              }  block relative group items-center py-[20px] px-[35px] h-full border-r-[#2b3180] border-r-[1px]`}
             >
               <span
                 className={`${
@@ -99,7 +99,7 @@ export default function Header({ ...props }) {
                     fill="#ffffff"
                   ></path>
                 </svg>
-                Search
+                <span className="hidden lg:block">Search</span>
               </div>
             </div>
             <div
@@ -125,7 +125,7 @@ export default function Header({ ...props }) {
                   } h-[3px] block w-[25px]`}
                 />
               </div>
-              <span className="relative">Menu</span>
+              <span className="relative hidden lg:block">Menu</span>
             </div>
           </div>
         </header>

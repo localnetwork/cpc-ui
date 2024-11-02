@@ -8,11 +8,11 @@ export default function Footer() {
 
   const currentYear = new Date().getFullYear();
   return (
-    <footer className="bg-black py-[100px] text-[#808080] border-[#242424] border-t-[1px]">
+    <footer className="bg-black py-[30px] md:py-[50px] lg:py-[100px] text-[#808080] border-[#242424] border-t-[1px]">
       <div className="container">
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-[50px]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[15px] gap-x-[50px]">
           {quickLinksData?.items?.data && (
-            <div className="">
+            <div className="col-span-3 sm:col-span-1 lg:col-span-1">
               <h2 className="text-[#f3f4f4] text-[22px] font-bold">
                 Quick Links
               </h2>
@@ -30,7 +30,7 @@ export default function Footer() {
             </div>
           )}
 
-          <div>
+          <div className="col-span-3 sm:col-span-1 lg:col-span-1">
             <h2 className="text-[#f3f4f4] text-[22px] font-bold mb-[30px]">
               Contact Details
             </h2>
@@ -116,9 +116,11 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="flex items-center mt-[100px] justify-between">
-          <p>Copyright &copy; {currentYear} Cordova Public College.</p>
-          <p className="opacity-50">
+        <div className="flex flex-col lg:flex-row flex-wrap justify-center items-center mt-[50px] lg:mt-[100px] lg:justify-between">
+          <p className="!mb-0">
+            Copyright &copy; {currentYear} Cordova Public College.
+          </p>
+          <p className="!mb-0 opacity-50">
             <a href="https://dio-ddev.vercel.app/" target="_blank">
               Web Develop By:{" "}
               <span className="underline ">Diome Nike Potot</span>
