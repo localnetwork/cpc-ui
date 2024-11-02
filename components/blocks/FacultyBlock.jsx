@@ -15,9 +15,9 @@ export default function Faculty({ block }) {
   };
 
   return (
-    <section className="py-[30px] md:py-[50px] lg:py-[100px] px-[15px] md:px-[30px] lg:px-[50px]">
+    <section className="py-[50px] lg:py-[70px] xl:py-[100px] px-[15px] md:px-[30px] lg:px-[50px]">
       <div className="container">
-        <h2 className="font-secondary leading-normal text-[80px] mb-[25px]">
+        <h2 className="font-secondary leading-normal text-[40px] md:text-[50px] lg:text-[80px] mb-[25px]">
           {block?.Title}
         </h2>
 
@@ -46,10 +46,10 @@ export default function Faculty({ block }) {
                   alt={item.Name}
                 />
               </div>
-              <h3 className="font-secondary mt-[30px] leading-normal text-[30px] mb-[15px]">
+              <h3 className="font-secondary mt-[30px] leading-normal text-[20px] md:text-[25px] lg:text-[30px] mb-[15px]">
                 {item.Name}
               </h3>
-              <h4 className="text-[#707070] text-[20px] font-semibold">
+              <h4 className="text-[#707070] text-[16px] md:text-[20px] font-semibold">
                 {item.Position}
               </h4>
             </motion.div>

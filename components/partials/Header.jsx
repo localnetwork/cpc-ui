@@ -43,7 +43,7 @@ export default function Header({ ...props }) {
     <>
       <Headroom className={`sticky mb-[-90px] top-0 left-0 w-full z-[1000] `}>
         <header
-          className={`flex flex-wrap items-center justify-between min-h-[90px] pl-[50px] ${
+          className={`flex flex-wrap items-center justify-between min-h-[90px] pl-[15px] md:pl-[30px] lg:pl-[50px] ${
             scrolled || blockFound ? "bg-white shadow-md" : ""
           }`}
         >

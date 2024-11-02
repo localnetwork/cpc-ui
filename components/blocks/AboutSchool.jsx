@@ -23,7 +23,7 @@ export default function Block({ block }) {
   return (
     <section
       ref={ref}
-      className="bg-[#F5F4F1] px-[15px] md:px-[30px] lg:px-[50px] py-[30px] md:py-[50px] lg:py-[100px] text-[#13100b]"
+      className="bg-[#F5F4F1] px-[15px] md:px-[30px] lg:px-[50px] py-[50px] lg:py-[100px] text-[#13100b]"
     >
       <div className="container text-center">
         <Chalk />

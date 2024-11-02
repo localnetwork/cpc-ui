@@ -8,7 +8,7 @@ export default function Courses({ block }) {
           Courses
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-[100px]">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-[30px] lg:gap-[100px]">
           {block?.Courses.map((item, index) => {
             return (
               <div key={index} className="relative group">
