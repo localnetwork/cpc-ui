@@ -44,7 +44,7 @@ export default function CoursePage({ page, blocks }) {
         />
         <Chalk />
         <div className="container pb-[50px] relative z-[200] relative">
-          <h1 className="relative inline-block text-white text-[50px] font-secondary leading-[65px]">
+          <h1 className="relative inline-block text-white text-[30px] md:text-[50px] font-secondary leading-[120%] lg:leading-[65px]">
             {Title}
             <motion.div
               className="w-[100%] block border-b-[5px] mt-[30px]"
@@ -107,9 +107,9 @@ export default function CoursePage({ page, blocks }) {
                   return (
                     <div
                       key={index}
-                      className="p-[30px] mb-[30px] bg-white border-[1px] border-[#ccc] pb-[30px]"
+                      className="px-[15px] py-[30px] md:p-[30px] mb-[30px] bg-white border-[1px] border-[#ccc] pb-[30px]"
                     >
-                      <div className="flex justify-between items-center mx-[-30px] mb-[30px] bg-[#1B217A] mt-[-30px] p-[30px]">
+                      <div className="flex justify-between items-center mx-[-15px] md:mx-[-30px] mb-[30px] bg-[#1B217A] mt-[-30px] py-[30px] px-[15px] md:p-[30px]">
                         <h3 className="text-[25px] text-[#f3f4f4] font-secondary">
                           {Year}
                         </h3>

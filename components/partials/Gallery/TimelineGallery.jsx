@@ -5,7 +5,6 @@ import siteConfig from "@/site.config";
 import Image from "next/image";
 import helper from "@/lib/helpers/helper";
 export default function TimelineGallery({ gallery }) {
-  console.log("gallery", gallery);
   return (
     <div className="mt-[50px]">
       <Swiper

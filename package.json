@@ -13,8 +13,10 @@
   },
   "dependencies": {
     "@fancyapps/ui": "^5.0.36",
+    "@google/generative-ai": "^0.21.0",
     "axios": "^1.7.4",
     "dotenv": "^16.4.5",
+    "formidable": "^3.5.2",
     "framer-motion": "^11.3.27",
     "fs": "^0.0.1-security",
     "https": "^1.0.0",
@@ -22,6 +24,7 @@
     "next": "14.2.5",
     "nextjs-toploader": "^3.6.15",
     "nodemailer": "^6.9.15",
+    "path": "^0.12.7",
     "react": "^18",
     "react-dom": "^18",
     "react-headroom": "^3.2.1",

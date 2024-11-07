@@ -20,7 +20,7 @@ export default function BackTop() {
       }`}
       onClick={scrollTop}
     >
-      <span className="bg-[#9A0C16] border border-[#ff9aa2] cursor-pointer rounded-sm flex items-center justify-center w-[30px] h-[30px] lg:w-[60px] lg:h-[60px]">
+      <span className="bg-[#9A0C16] border border-[#ff9aa2] cursor-pointer rounded-sm flex items-center justify-center w-[40px] h-[40px] lg:w-[60px] lg:h-[60px]">
         <ChevronRight
           color="#fff"
           width={35}

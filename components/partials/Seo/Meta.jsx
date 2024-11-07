@@ -10,9 +10,13 @@ export default function Meta({ metaImage, page }) {
   const { Description } = page?.attributes?.Metatags || "";
 
   const findTitle = () => {
-    return page?.route_url == "/home"
-      ? Title
-      : Title + " - Cordova Public College";
+    if (page) {
+      return page?.route_url == "/home"
+        ? Title
+        : Title + " - Cordova Public College";
+    } else {
+      return "404 - Page Not Found";
+    }
   };
 
   /**

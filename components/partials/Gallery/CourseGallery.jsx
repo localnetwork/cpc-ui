@@ -38,13 +38,15 @@ export default function CourseGallery({ Gallery }) {
                     href={`${siteImagePath}${item?.url}&w=2048`}
                     id={`fancybox-${index}`}
                   >
-                    <Image
-                      src={`${siteUrl}${item.url}`}
-                      width={300}
-                      height={300}
-                      alt={item?.caption || "Hello World"}
-                      className="w-full h-[200px] md:h-[250px] lg:h-[300px] xl:h-[350px] object-cover bg-[#f5f5f5]"
-                    />
+                    <div className="pb-[83.33%]">
+                      <Image
+                        src={`${siteUrl}${item.url}`}
+                        width={300}
+                        height={300}
+                        alt={item?.caption || "Hello World"}
+                        className="w-full h-full absolute top-0 left-0 object-cover bg-[#f5f5f5]"
+                      />
+                    </div>
                     <span className="select-none translate-y-[150%] group-hover:translate-y-[0] transition inline-flex text-[14px] items-center justify-center gap-[10px] absolute text-white py-[8px] px-[20px] bottom-0 left-0 bg-[#000] bg-opacity-70 font-secondary">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
