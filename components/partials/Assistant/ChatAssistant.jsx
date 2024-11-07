@@ -32,11 +32,19 @@ export default function ChatAssistant() {
 
     // Send request to the /api/chat endpoint
     try {
-      const response = await fetch("/api/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ prompt: input }),
-      });
+      console.log(
+        "process.env.NEXT_PUBLIC_AI_URL",
+        process.env.NEXT_PUBLIC_AI_URL
+      );
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_AI_URL}/api/chat`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ prompt: input }),
+        }
+      );
+
       const data = await response.json();
 
       const botMessage = { sender: "bot", text: "" };
