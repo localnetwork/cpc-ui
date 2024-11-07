@@ -33,6 +33,7 @@
     "sharp": "^0.33.5",
     "swiper": "^11.1.14",
     "swr": "^2.2.5",
+    "vercel": "^37.14.0",
     "zustand": "^4.5.5"
   },
   "devDependencies": {
