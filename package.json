@@ -21,7 +21,7 @@
     "fs": "^0.0.1-security",
     "https": "^1.0.0",
     "jsona": "^1.12.1",
-    "next": "14.2.5",
+    "next": "^15.0.2",
     "nextjs-toploader": "^3.6.15",
     "nodemailer": "^6.9.15",
     "path": "^0.12.7",
