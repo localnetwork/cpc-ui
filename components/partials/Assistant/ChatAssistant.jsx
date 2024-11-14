@@ -271,7 +271,7 @@ export default function ChatAssistant() {
           </div>
 
           <div className="px-3 text-[#c5c5c5] text-[12px]">
-            Current model: gemini-1.0-pro
+            Current model: gemini-1.5-pro-002
           </div>
         </div>
       )}
