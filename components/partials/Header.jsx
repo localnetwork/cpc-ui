@@ -9,8 +9,8 @@ import globalState from "@/lib/store/globalState";
 import MainMenu from "./Menus/MainMenu";
 import { useRouter } from "next/router";
 
-import { disabledTypes, disabledComponents } from "@/lib/helpers/constant";
-import { blockExistChecker } from "@/lib/helpers/block";
+import { disabledTypes, disabledComponents } from "@/lib/utils/constant";
+import { blockExistChecker } from "@/lib/utils/block";
 export default function Header({ ...props }) {
   const [scrolled, setScrolled] = useState(false);
   const [mainMenu] = globalState((state) => [state.mainMenu]);

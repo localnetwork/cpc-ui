@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import helper from "@/lib/helpers/helper";
+import helper from "@/lib/utils/helper";
 import newsEntriesData from "@/prebuild/static-data/news-block-articles.json";
 import ChevronRight from "../icons/ChevronRight";
 

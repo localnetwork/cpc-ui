@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+import helper from "@/lib/utils/helper";
 export default function ChatAssistant() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([]);
@@ -215,30 +215,37 @@ export default function ChatAssistant() {
   [&::-webkit-scrollbar-thumb]:[border-radius:8px] 
   [&::-webkit-scrollbar-thumb]:bg-[#9A0C16]`}
                 >
-                  {messages.map((msg, index) => (
-                    <div
-                      key={index}
-                      className={`${
-                        msg.sender === "user"
-                          ? "bg-[#1B217A] text-white self-end"
-                          : "bg-gray-300 text-gray-800 self-start"
-                      } p-3 rounded-lg max-w-[80%] text-[14px]`}
-                    >
-                      {/* {msg.text} */}
+                  {messages.map((msg, index) => {
+                    const msgTxt = helper.formatResponseText(
+                      msg.text.toString()
+                    );
 
-                      {msg.text ? (
-                        <>{msg.text}</>
-                      ) : (
-                        <>
-                          {isTyping && (
-                            <div className="self-start p-3 text-gray-500 italic">
-                              Assistant is typing...
-                            </div>
-                          )}
-                        </>
-                      )}
-                    </div>
-                  ))}
+                    return (
+                      <div
+                        key={index}
+                        className={`${
+                          msg.sender === "user"
+                            ? "bg-[#1B217A] text-white self-end"
+                            : "bg-gray-300 text-gray-800 self-start"
+                        } p-3 rounded-lg max-w-[80%] text-[14px]`}
+                      >
+                        {msg.text ? (
+                          <>
+                            <div
+                              className="break-words"
+                              dangerouslySetInnerHTML={{
+                                __html: helper.formatResponseText(msg.text),
+                              }}
+                            />
+                          </>
+                        ) : (
+                          <div className="self-start p-3 text-gray-500 italic">
+                            Assistant is typing...
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
                 </div>
               </>
             ) : (

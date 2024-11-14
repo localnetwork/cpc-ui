@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import siteConfig from "@/site.config";
 import Image from "next/image";
-import helper from "@/lib/helpers/helper";
+import helper from "@/lib/utils/helper";
 export default function TimelineGallery({ gallery }) {
   return (
     <div className="mt-[50px]">

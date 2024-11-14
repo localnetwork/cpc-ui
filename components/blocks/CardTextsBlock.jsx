@@ -1,4 +1,4 @@
-import helper from "@/lib/helpers/helper";
+import helper from "@/lib/utils/helper";
 import Link from "next/link";
 
 export default function Block({ block }) {

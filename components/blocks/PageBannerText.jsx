@@ -1,6 +1,6 @@
 import BannerTextBreadcrumbs from "../partials/Breadcrumbs/BannerTextBreadcrumbs";
 
-import helper from "@/lib/helpers/helper";
+import helper from "@/lib/utils/helper";
 /**
  * Renders a full-width section with a background color, title, and optional breadcrumbs.
  * @param {object} page - Page data from Strapi.

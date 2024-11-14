@@ -1,4 +1,4 @@
-import helper from "@/lib/helpers/helper";
+import helper from "@/lib/utils/helper";
 import Image from "next/image";
 import siteConfig from "@/site.config";
 import { motion, useInView } from "framer-motion";

@@ -3,7 +3,7 @@ import Image from "next/image";
 import { InlineShareButtons } from "sharethis-reactjs";
 import globalState from "@/lib/store/globalState";
 import { useEffect, useState } from "react";
-import helper from "@/lib/helpers/helper";
+import helper from "@/lib/utils/helper";
 import ArticleGallery from "../partials/Gallery/ArticleGallery";
 
 export default function Article({ page }) {

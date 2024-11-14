@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import Link from "next/link";
 import ChevronRight from "@/components/icons/ChevronRight";
-import helper from "@/lib/helpers/helper";
+import helper from "@/lib/utils/helper";
 
 export default function BannerTextBreadcrumbs({ color, page }) {
   const router = useRouter();

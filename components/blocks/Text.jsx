@@ -1,4 +1,4 @@
-import helper from "@/lib/helpers/helper";
+import helper from "@/lib/utils/helper";
 
 export default function Text({ block }) {
   const { Theme, Description } = block;
