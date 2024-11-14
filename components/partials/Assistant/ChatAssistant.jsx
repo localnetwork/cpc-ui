@@ -5,6 +5,7 @@ export default function ChatAssistant() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false); // For the typing effect
+  const [isResponding, setIsResponding] = useState(false); // For the typing effect
 
   const toggleChat = () => setIsOpen(!isOpen);
 
@@ -24,7 +25,11 @@ export default function ChatAssistant() {
   }, [messages]);
 
   const handleSend = async () => {
-    if (input.trim() === "") return;
+    setIsResponding(true);
+    if (input.trim() === "") {
+      setIsResponding(false);
+      return;
+    }
 
     const userMessage = { sender: "user", text: input };
     setMessages([...messages, userMessage]);
@@ -32,24 +37,19 @@ export default function ChatAssistant() {
 
     // Send request to the /api/chat endpoint
     try {
-      console.log(
-        "process.env.NEXT_PUBLIC_AI_URL",
-        process.env.NEXT_PUBLIC_AI_URL
-      );
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_AI_URL}/api/chat`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ prompt: input }),
-        }
-      );
+      const response = await fetch(`${process.env.NEXT_PUBLIC_AI_URL}/chat`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ prompt: input }),
+      });
+      setIsResponding(false);
 
       const data = await response.json();
 
       const botMessage = { sender: "bot", text: "" };
       setIsTyping(true); // Start the typing effect
       setMessages((prevMessages) => [...prevMessages, botMessage]);
+      setIsTyping(false); // Stop typing effect
 
       // Simulate typing effect for the bot's response
       setTimeout(() => {
@@ -58,7 +58,9 @@ export default function ChatAssistant() {
           updatedMessages[updatedMessages.length - 1].text = data.message;
           return updatedMessages;
         });
-        setIsTyping(false); // Stop typing effect
+
+        const msgBox = document.querySelector(".message-box");
+        msgBox.scrollTop = msgBox.scrollHeight; // Scroll to the bottom of the chat
       }, 1500); // Adjust the delay as needed
     } catch (error) {
       console.error("Error in fetching response:", error);
@@ -66,6 +68,7 @@ export default function ChatAssistant() {
         ...prevMessages,
         { sender: "bot", text: "Sorry, something went wrong!" },
       ]);
+      setIsResponding(false);
     }
   };
 
@@ -80,8 +83,9 @@ export default function ChatAssistant() {
         <>
           <button
             onClick={toggleChat}
-            className="bg-[#1B217A] border-[#3e449f] border text-white py-2 px-4 rounded-md font-semibold"
+            className="bg-[#1B217A] border-[#3e449f] border relative text-white py-2 px-4 rounded-md font-semibold"
           >
+            <span className="bg-[#30ff30] absolute top-[8px] left-[40px] w-[18px] h-[18px] rounded-full block " />
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -104,7 +108,7 @@ export default function ChatAssistant() {
           <div className="flex gap-2 px-3 py-2 justify-between bg-[#f5f5f5] border-b">
             <div className="flex items-center text-[#777] text-[14px] gap-2 leading-[100%]">
               <span className="bg-[#30ff30] w-[10px] h-[10px] rounded-full block mt-[2px]" />
-              AI assistant
+              AI Assistant
             </div>
             <div className="flex gap-2">
               <button onClick={handleClear} className="text-[#777]">
@@ -145,7 +149,7 @@ export default function ChatAssistant() {
           {messages?.length > 0 ? (
             <>
               <div
-                className="flex flex-col space-y-3 p-4 max-h-[calc(90vh-300px)] overflow-y-auto 
+                className="message-box flex flex-col space-y-3 p-4 max-h-[calc(90vh-300px)] overflow-y-auto 
   [&::-webkit-scrollbar]:[width:8px] 
   [&::-webkit-scrollbar-track]:[background:#ccc] 
   [&::-webkit-scrollbar-thumb]:[border-radius:8px] 
@@ -181,18 +185,26 @@ export default function ChatAssistant() {
             <div className="flex text-[#777] text-center  flex-col space-y-3 p-4 max-h-[350px] overflow-y-auto">
               <div className="p-3 flex flex-col justify-center items-center text-[14px] bg-[#F5F4F1]">
                 <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-10 h-10"
+                  version="1.1"
+                  width="50"
+                  height="50"
+                  x="0"
+                  y="0"
+                  viewBox="0 0 16 16"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 0 1-.825-.242m9.345-8.334a2.126 2.126 0 0 0-.476-.095 48.64 48.64 0 0 0-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0 0 11.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155"
-                  />
+                  <g>
+                    <path
+                      d="M14.5 5.625h-1.125V5A4.38 4.38 0 0 0 9 .625H7A4.38 4.38 0 0 0 2.625 5v.625H1.5C.742 5.625.125 6.242.125 7v3c0 .758.617 1.375 1.375 1.375h1.163c.19 1.683 1.604 3 3.337 3h.184c.164.575.689 1 1.316 1h1c.758 0 1.375-.617 1.375-1.375s-.617-1.375-1.375-1.375h-1c-.627 0-1.152.425-1.316 1H6A2.628 2.628 0 0 1 3.375 11V5A3.629 3.629 0 0 1 7 1.375h2A3.629 3.629 0 0 1 12.625 5v6c0 .207.168.375.375.375h1.5c.758 0 1.375-.617 1.375-1.375V7c0-.758-.617-1.375-1.375-1.375zm-7 7.75h1a.626.626 0 0 1 0 1.25h-1a.626.626 0 0 1 0-1.25zM.875 10V7c0-.345.28-.625.625-.625h1.125v4.25H1.5A.626.626 0 0 1 .875 10zm14.25 0c0 .345-.28.625-.625.625h-1.125v-4.25H14.5c.345 0 .625.28.625.625z"
+                      fill="#777"
+                      opacity="1"
+                      data-original="#000000"
+                    ></path>
+                    <path
+                      d="M7.5 5.125H7a.376.376 0 0 0-.358.263l-1.25 4a.375.375 0 0 0 .716.224l.23-.737h1.823l.23.737a.376.376 0 0 0 .717-.224l-1.25-4a.376.376 0 0 0-.358-.263zm-.927 3 .677-2.168.677 2.168zM10.25 5.125a.375.375 0 0 0-.375.375v4a.375.375 0 0 0 .75 0v-4a.375.375 0 0 0-.375-.375z"
+                      fill="#777"
+                      opacity="1"
+                    ></path>
+                  </g>
                 </svg>
                 Ask anything about Cordova Public College.
               </div>
@@ -210,22 +222,51 @@ export default function ChatAssistant() {
             />
             <button
               onClick={handleSend}
-              className="bg-[#9A0C16] text-white p-2 rounded-md ml-2"
+              className={`bg-[#9A0C16] text-white p-2 rounded-md ml-2 flex justify-center items-center ${
+                isResponding ? "opacity-50 cursor-not-allowed" : ""
+              }`}
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="size-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5"
-                />
-              </svg>
+              {isResponding ? (
+                <>
+                  <svg
+                    class="animate-spin h-5 w-5 text-white"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      class="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      stroke-width="4"
+                    ></circle>
+                    <path
+                      class="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                    ></path>
+                  </svg>
+                </>
+              ) : (
+                <>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="size-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5"
+                    />
+                  </svg>
+                </>
+              )}
             </button>
           </div>
 
