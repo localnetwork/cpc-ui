@@ -6,6 +6,7 @@ export default function ChatAssistant() {
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false); // For the typing effect
   const [isResponding, setIsResponding] = useState(false); // For the typing effect
+  const [isResized, setIsResized] = useState(false);
 
   const toggleChat = () => setIsOpen(!isOpen);
 
@@ -72,13 +73,21 @@ export default function ChatAssistant() {
     }
   };
 
+  const handleResize = () => {
+    setIsResized((prevState) => !prevState);
+  };
+
   const handleClear = () => {
     setMessages([]);
     localStorage.removeItem("chatMessages"); // Clear conversation from localStorage
   };
 
   return (
-    <div className="fixed w-full left-5 max-w-[300px] z-[9999] bottom-5 font-sans">
+    <div
+      className={`fixed w-full bottom-0 p-[15px] ${
+        isResized && isOpen ? "max-w-full h-full" : "max-w-[300px]"
+      } z-[9999] font-sans`}
+    >
       {!isOpen && (
         <>
           <button
@@ -104,13 +113,59 @@ export default function ChatAssistant() {
         </>
       )}
       {isOpen && (
-        <div className="bg-white w-full rounded-lg shadow-lg mt-3 overflow-hidden border border-[#ddd]">
+        <div
+          className={`bg-white flex flex-col w-full rounded-lg shadow-lg overflow-hidden border border-[#ddd] ${
+            isResized ? "h-full" : ""
+          }`}
+        >
           <div className="flex gap-2 px-3 py-2 justify-between bg-[#f5f5f5] border-b">
             <div className="flex items-center text-[#777] text-[14px] gap-2 leading-[100%]">
               <span className="bg-[#30ff30] w-[10px] h-[10px] rounded-full block mt-[2px]" />
               AI Assistant
             </div>
-            <div className="flex gap-2">
+            <div className="flex gap-2 text-[#777]">
+              <button
+                className=""
+                onClick={() => {
+                  handleResize();
+                }}
+              >
+                {isResized ? (
+                  <>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="size-6"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M5 12h14"
+                      />
+                    </svg>
+                  </>
+                ) : (
+                  <>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="size-6"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15"
+                      />
+                    </svg>
+                  </>
+                )}
+              </button>
               <button onClick={handleClear} className="text-[#777]">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -146,132 +201,139 @@ export default function ChatAssistant() {
             </div>
           </div>
 
-          {messages?.length > 0 ? (
-            <>
-              <div
-                className="message-box flex flex-col space-y-3 p-4 max-h-[calc(90vh-300px)] overflow-y-auto 
+          <div className="flex flex-col flex-grow">
+            {messages?.length > 0 ? (
+              <>
+                <div
+                  className={`message-box flex flex-col space-y-3 p-4 ${
+                    isResized
+                      ? "max-h-[calc(100vh-200px)]"
+                      : "max-h-[calc(90vh-300px)]"
+                  } overflow-y-auto 
   [&::-webkit-scrollbar]:[width:8px] 
   [&::-webkit-scrollbar-track]:[background:#ccc] 
   [&::-webkit-scrollbar-thumb]:[border-radius:8px] 
-  [&::-webkit-scrollbar-thumb]:bg-[#9A0C16]"
-              >
-                {messages.map((msg, index) => (
-                  <div
-                    key={index}
-                    className={`${
-                      msg.sender === "user"
-                        ? "bg-[#1B217A] text-white self-end"
-                        : "bg-gray-300 text-gray-800 self-start"
-                    } p-3 rounded-lg max-w-[80%] text-[14px]`}
-                  >
-                    {/* {msg.text} */}
-
-                    {msg.text ? (
-                      <>{msg.text}</>
-                    ) : (
-                      <>
-                        {isTyping && (
-                          <div className="self-start p-3 text-gray-500 italic">
-                            Assistant is typing...
-                          </div>
-                        )}
-                      </>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </>
-          ) : (
-            <div className="flex text-[#777] text-center  flex-col space-y-3 p-4 max-h-[350px] overflow-y-auto">
-              <div className="p-3 flex flex-col justify-center items-center text-[14px] bg-[#F5F4F1]">
-                <svg
-                  version="1.1"
-                  width="50"
-                  height="50"
-                  x="0"
-                  y="0"
-                  viewBox="0 0 16 16"
+  [&::-webkit-scrollbar-thumb]:bg-[#9A0C16]`}
                 >
-                  <g>
-                    <path
-                      d="M14.5 5.625h-1.125V5A4.38 4.38 0 0 0 9 .625H7A4.38 4.38 0 0 0 2.625 5v.625H1.5C.742 5.625.125 6.242.125 7v3c0 .758.617 1.375 1.375 1.375h1.163c.19 1.683 1.604 3 3.337 3h.184c.164.575.689 1 1.316 1h1c.758 0 1.375-.617 1.375-1.375s-.617-1.375-1.375-1.375h-1c-.627 0-1.152.425-1.316 1H6A2.628 2.628 0 0 1 3.375 11V5A3.629 3.629 0 0 1 7 1.375h2A3.629 3.629 0 0 1 12.625 5v6c0 .207.168.375.375.375h1.5c.758 0 1.375-.617 1.375-1.375V7c0-.758-.617-1.375-1.375-1.375zm-7 7.75h1a.626.626 0 0 1 0 1.25h-1a.626.626 0 0 1 0-1.25zM.875 10V7c0-.345.28-.625.625-.625h1.125v4.25H1.5A.626.626 0 0 1 .875 10zm14.25 0c0 .345-.28.625-.625.625h-1.125v-4.25H14.5c.345 0 .625.28.625.625z"
-                      fill="#777"
-                      opacity="1"
-                      data-original="#000000"
-                    ></path>
-                    <path
-                      d="M7.5 5.125H7a.376.376 0 0 0-.358.263l-1.25 4a.375.375 0 0 0 .716.224l.23-.737h1.823l.23.737a.376.376 0 0 0 .717-.224l-1.25-4a.376.376 0 0 0-.358-.263zm-.927 3 .677-2.168.677 2.168zM10.25 5.125a.375.375 0 0 0-.375.375v4a.375.375 0 0 0 .75 0v-4a.375.375 0 0 0-.375-.375z"
-                      fill="#777"
-                      opacity="1"
-                    ></path>
-                  </g>
-                </svg>
-                Ask anything about Cordova Public College.
+                  {messages.map((msg, index) => (
+                    <div
+                      key={index}
+                      className={`${
+                        msg.sender === "user"
+                          ? "bg-[#1B217A] text-white self-end"
+                          : "bg-gray-300 text-gray-800 self-start"
+                      } p-3 rounded-lg max-w-[80%] text-[14px]`}
+                    >
+                      {/* {msg.text} */}
+
+                      {msg.text ? (
+                        <>{msg.text}</>
+                      ) : (
+                        <>
+                          {isTyping && (
+                            <div className="self-start p-3 text-gray-500 italic">
+                              Assistant is typing...
+                            </div>
+                          )}
+                        </>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </>
+            ) : (
+              <div className="flex text-[#777] text-center h-full flex-col space-y-3 p-4 max-h-[350px] overflow-y-auto">
+                <div className="p-3 flex flex-col justify-center items-center text-[14px] bg-[#F5F4F1]">
+                  <svg
+                    version="1.1"
+                    width="50"
+                    height="50"
+                    x="0"
+                    y="0"
+                    viewBox="0 0 16 16"
+                  >
+                    <g>
+                      <path
+                        d="M14.5 5.625h-1.125V5A4.38 4.38 0 0 0 9 .625H7A4.38 4.38 0 0 0 2.625 5v.625H1.5C.742 5.625.125 6.242.125 7v3c0 .758.617 1.375 1.375 1.375h1.163c.19 1.683 1.604 3 3.337 3h.184c.164.575.689 1 1.316 1h1c.758 0 1.375-.617 1.375-1.375s-.617-1.375-1.375-1.375h-1c-.627 0-1.152.425-1.316 1H6A2.628 2.628 0 0 1 3.375 11V5A3.629 3.629 0 0 1 7 1.375h2A3.629 3.629 0 0 1 12.625 5v6c0 .207.168.375.375.375h1.5c.758 0 1.375-.617 1.375-1.375V7c0-.758-.617-1.375-1.375-1.375zm-7 7.75h1a.626.626 0 0 1 0 1.25h-1a.626.626 0 0 1 0-1.25zM.875 10V7c0-.345.28-.625.625-.625h1.125v4.25H1.5A.626.626 0 0 1 .875 10zm14.25 0c0 .345-.28.625-.625.625h-1.125v-4.25H14.5c.345 0 .625.28.625.625z"
+                        fill="#777"
+                        opacity="1"
+                        data-original="#000000"
+                      ></path>
+                      <path
+                        d="M7.5 5.125H7a.376.376 0 0 0-.358.263l-1.25 4a.375.375 0 0 0 .716.224l.23-.737h1.823l.23.737a.376.376 0 0 0 .717-.224l-1.25-4a.376.376 0 0 0-.358-.263zm-.927 3 .677-2.168.677 2.168zM10.25 5.125a.375.375 0 0 0-.375.375v4a.375.375 0 0 0 .75 0v-4a.375.375 0 0 0-.375-.375z"
+                        fill="#777"
+                        opacity="1"
+                      ></path>
+                    </g>
+                  </svg>
+                  Ask anything about Cordova Public College.
+                </div>
+              </div>
+            )}
+
+            <div className="sticky bottom-0 mt-auto">
+              <div className="flex items-center p-3 border-t border-gray-300 ">
+                <input
+                  type="text"
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                  onKeyDown={(e) => e.key === "Enter" && handleSend()}
+                  placeholder="Type a message..."
+                  className="flex-grow text-[14px] p-2 rounded-md border border-[#ff9aa2] focus:border-[#ff9aa2] outline-none focus-visible:border-[#ff9aa2] bg-[#f7f7f7] text-[#777]"
+                />
+                <button
+                  onClick={handleSend}
+                  className={`bg-[#9A0C16] text-white p-2 rounded-md ml-2 flex justify-center items-center ${
+                    isResponding ? "opacity-50 cursor-not-allowed" : ""
+                  }`}
+                >
+                  {isResponding ? (
+                    <>
+                      <svg
+                        class="animate-spin h-5 w-5 text-white"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <circle
+                          class="opacity-25"
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="currentColor"
+                          stroke-width="4"
+                        ></circle>
+                        <path
+                          class="opacity-75"
+                          fill="currentColor"
+                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                        ></path>
+                      </svg>
+                    </>
+                  ) : (
+                    <>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={1.5}
+                        stroke="currentColor"
+                        className="size-6"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5"
+                        />
+                      </svg>
+                    </>
+                  )}
+                </button>
+              </div>
+              <div className="px-3 text-[#c5c5c5] text-[12px]">
+                Current model: gemini-1.5-pro-002
               </div>
             </div>
-          )}
-
-          <div className="flex items-center p-3 border-t border-gray-300 ">
-            <input
-              type="text"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              onKeyDown={(e) => e.key === "Enter" && handleSend()}
-              placeholder="Type a message..."
-              className="flex-grow text-[14px] p-2 rounded-md border border-[#ff9aa2] focus:border-[#ff9aa2] outline-none focus-visible:border-[#ff9aa2] bg-[#f7f7f7] text-[#777]"
-            />
-            <button
-              onClick={handleSend}
-              className={`bg-[#9A0C16] text-white p-2 rounded-md ml-2 flex justify-center items-center ${
-                isResponding ? "opacity-50 cursor-not-allowed" : ""
-              }`}
-            >
-              {isResponding ? (
-                <>
-                  <svg
-                    class="animate-spin h-5 w-5 text-white"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                  >
-                    <circle
-                      class="opacity-25"
-                      cx="12"
-                      cy="12"
-                      r="10"
-                      stroke="currentColor"
-                      stroke-width="4"
-                    ></circle>
-                    <path
-                      class="opacity-75"
-                      fill="currentColor"
-                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                    ></path>
-                  </svg>
-                </>
-              ) : (
-                <>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="currentColor"
-                    className="size-6"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5"
-                    />
-                  </svg>
-                </>
-              )}
-            </button>
-          </div>
-
-          <div className="px-3 text-[#c5c5c5] text-[12px]">
-            Current model: gemini-1.5-pro-002
           </div>
         </div>
       )}
