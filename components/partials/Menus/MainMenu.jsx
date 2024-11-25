@@ -11,14 +11,14 @@ export default function MainMenu() {
     <div
       className={`menu-header ${
         mainMenu ? "menu-open" : "menu-closed"
-      } fixed z-[9000] top-0 left-0 w-full h-full bg-[#0c0f40]`}
+      } fixed z-[9000] top-0 left-0 w-full overflow-y-auto  overflow-x-hidden h-full bg-[#0c0f40]`}
     >
       <div className="relative z-[2]">
         <div
           key={mainMenu ? "menu-open" : "menu-close"}
           className="sticky mb-[30px] flex justify-between top-0 pt-[30px] px-[30px]"
         >
-          <div className="font-secondary text-[40px]">
+          <div className="hidden lg:block font-secondary text-[40px] leading-normal">
             <Link
               href="/"
               onClick={() => {
@@ -52,7 +52,7 @@ export default function MainMenu() {
           </div>
         </div>
 
-        <div className="flex px-[30px] mx-[-30px]">
+        <div className="flex flex-col flex-col-reverse md:flex-row px-[30px] mx-[-30px]">
           <div className="w-full max-w-[25%] px-[30px]">
             <h2 className="font-secondary text-[30px] leading-[45px]">
               Preparing for Success at Cordova Public College.
@@ -69,12 +69,12 @@ export default function MainMenu() {
               </Link>
             </div>
           </div>
-          <div className="columns-2 gap-[50px] px-[30px] w-3/4 custom-column-avoid">
+          <div className="columns-1 lg:columns-2 gap-[50px] px-[30px] w-full lg:w-3/4 custom-column-avoid">
             {mainMenuData?.items?.data?.map((item, index) => {
               const { title, url, children } = item?.attributes;
               return (
                 <div
-                  className="flex flex-col flex-wrap mt-[1px] pb-[30px] break-inside-avoid"
+                  className="flex flex-col flex-wrap mt-0 lg:mt-[1px] pb-[30px] break-inside-avoid"
                   key={index}
                 >
                   <Link

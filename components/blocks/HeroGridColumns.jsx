@@ -27,15 +27,15 @@ export default function Block({ block }) {
                   </div>
 
                   <div
-                    className="p-[30px] grow"
+                    className="p-[20px] lg:p-[30px] grow"
                     style={{ background: item.Color }}
                   >
-                    <h2 className="text-[40px] font-secondary leading-[45px]">
+                    <h2 className="text-[30px] lg:text-[35px] md:text-[40px] font-secondary leading-[45px]">
                       {removeLastWord}{" "}
                       <span className="text-[#ddcba4]">{lastWord}</span>
                     </h2>
                     <div
-                      className="text-[18px] mt-[20px]"
+                      className="text-[16px] md:text-[18px] mt-[20px]"
                       dangerouslySetInnerHTML={{ __html: item.Description }}
                     />
                   </div>

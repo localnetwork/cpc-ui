@@ -90,11 +90,11 @@ export default function Banner({ block }) {
           }}
         >
           <div
-            className="text-[25px] mb-[10px]"
+            className="text-[25px] mb-[10px] px-[15px]"
             dangerouslySetInnerHTML={{ __html: block?.Description }}
           />
           <motion.div
-            className="w-[100%] block border-b-[5px]"
+            className="w-[100%] hidden md:block border-b-[5px]"
             style={{ filter: "url(#chalk)" }}
             variants={variants}
             initial="initial"

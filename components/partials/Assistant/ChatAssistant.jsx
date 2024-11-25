@@ -85,7 +85,7 @@ export default function ChatAssistant() {
   return (
     <div
       className={`fixed w-full bottom-0 p-[15px] ${
-        isResized && isOpen ? "max-w-full h-full" : "max-w-[300px]"
+        isResized && isOpen ? "max-w-full h-full" : "!w-auto max-w-[300px]"
       } z-[9999] font-sans`}
     >
       {!isOpen && (
@@ -143,7 +143,7 @@ export default function ChatAssistant() {
                       <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        d="M5 12h14"
+                        d="M16.5 8.25V6a2.25 2.25 0 0 0-2.25-2.25H6A2.25 2.25 0 0 0 3.75 6v8.25A2.25 2.25 0 0 0 6 16.5h2.25m8.25-8.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-7.5A2.25 2.25 0 0 1 8.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 0 0-2.25 2.25v6"
                       />
                     </svg>
                   </>
@@ -279,7 +279,7 @@ export default function ChatAssistant() {
             )}
 
             <div className="sticky bottom-0 mt-auto">
-              <div className="flex items-center p-3 border-t border-gray-300 ">
+              <div className="flex gap-[15px] items-center p-3 border-t border-gray-300 ">
                 <input
                   type="text"
                   value={input}
@@ -290,7 +290,7 @@ export default function ChatAssistant() {
                 />
                 <button
                   onClick={handleSend}
-                  className={`bg-[#9A0C16] text-white p-2 rounded-md ml-2 flex justify-center items-center ${
+                  className={`bg-[#9A0C16] text-white p-2 rounded-md flex justify-center items-center ${
                     isResponding ? "opacity-50 cursor-not-allowed" : ""
                   }`}
                 >

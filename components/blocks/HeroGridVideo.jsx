@@ -10,7 +10,7 @@ export default function Block({ block }) {
       <div className="container">
         <div className="flex flex-wrap gap-y-[15px] md:flex-row mx-[-30px] justify-between items-center">
           <div className="px-[15px] md:px-[30px] lg:max-w-[50%] w-full">
-            <h2 className="text-[48px] font-secondary mb-[30px] leading-[65px]">
+            <h2 className="text-[35px] md:text-[48px] font-secondary mb-[30px] leading-[55px] lg:leading-[65px]">
               {Title}
             </h2>
             <div

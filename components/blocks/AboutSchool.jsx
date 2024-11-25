@@ -28,26 +28,26 @@ export default function Block({ block }) {
       <div className="container text-center">
         <Chalk />
         <motion.div
-          className="mb-[50px]"
+          className="mb-[30px] md:mb-[50px]"
           variants={fadeInUp}
           initial="initial"
           animate={isInView ? "animate" : "initial"}
           transition={{ duration: 1, ease: "easeInOut" }}
         >
           <Image
-            className="mx-auto"
+            className="mx-auto w-[100px] md:w-[150px]"
             src={siteUrl + block?.Logo?.url}
             width={150}
             height={150}
             alt="Logo"
           />
         </motion.div>
-        <div className="relative inline-block mb-[50px]">
-          <h2 className="text-[40px] leading-[100%] font-secondary mb-[20px]">
+        <div className="relative inline-block md:mb-[50px]">
+          <h2 className="text-[30px] md:text-[35px] lg:text-[40px] leading-[45px] lg:leading-[100%] font-secondary mb-[20px]">
             {block?.Title}
           </h2>
           <motion.div
-            className="w-[100%] block border-b-[3px] border-[#13100b]"
+            className="w-[100%] hidden md:block border-b-[3px] border-[#13100b]"
             style={{ filter: "url(#chalk)" }}
             variants={variants}
             initial="initial"
