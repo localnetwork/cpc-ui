@@ -20,7 +20,7 @@ export default function Article({ page }) {
 
   return (
     <div className="bg-[#F5F4F1]">
-      <div className="page-header bg-[#0E0E0E] pb-[20px] min-h-[200px] pt-[150px] pb-[50px]">
+      <div className="page-header bg-[#0E0E0E] min-h-[200px] pt-[150px] pb-[50px]">
         <div className="max-w-[944px] mx-auto px-[15px]">
           <h2 className="text-[50px] font-secondary leading-[60px]">
             {page?.attributes?.Title}
@@ -31,7 +31,12 @@ export default function Article({ page }) {
         <div className="relative">
           <span className="bg-[#0E0E0E] absolute inset-x-0 top-0 h-1/2" />
           <div className="max-w-[944px] mx-auto px-[15px] relative">
-            <div className="aspect-video rounded-lg bg-[#ddd] overflow-hidden">
+            <div className="aspect-video relative rounded-lg bg-[#ddd] overflow-hidden">
+              {page?.attributes?.Category && (
+                <span className="absolute top-[15px] left-[15px] text-center min-w-[50px] bg-[#1B217A] rounded-[5px] text-white text-[12px] px-[10px] py-[2px] select-none">
+                  {page?.attributes?.Category}
+                </span>
+              )}
               <Image
                 src={siteUrl + page?.attributes?.Image?.url}
                 width={1200}

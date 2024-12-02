@@ -12,7 +12,7 @@ export default function Courses({ block }) {
           {block?.Courses.map((item, index) => {
             return (
               <div key={index} className="relative group">
-                <div className="relative min-h-[600px] overflow-hidden">
+                <div className="relative pb-[110%] overflow-hidden">
                   <Link
                     href={item.slug}
                     className="block absolute top-0 left-0 w-full h-full z-[200]"
