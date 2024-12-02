@@ -13,9 +13,9 @@ export default function Block({ block }) {
           </h2>
         )}
         <div className="grid gap-10 lg:grid-cols-5">
-          <div className="lg:col-span-3 overflow-hidden group relative flex aspect-square items-end overflow-hidden rounded-2xl md:aspect-video">
+          <div className="lg:col-span-3 group relative flex aspect-square items-end overflow-hidden rounded-2xl md:aspect-video">
             <Link
-              href={AllnewsEntriesData[0].route_url}
+              href={AllnewsEntriesData?.[0]?.route_url || "#"}
               className="h-full w-full flex items-end"
             >
               <Image

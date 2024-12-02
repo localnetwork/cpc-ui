@@ -11,6 +11,12 @@ const nextConfig = {
         pathname: `/**`,
       },
       {
+        protocol: "https",
+        hostname: "cpc-strapi-cms.onrender.com",
+        port: "",
+        pathname: `/**`,
+      },
+      {
         protocol: "http",
         hostname: "localhost",
         port: "1337",

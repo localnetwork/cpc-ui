@@ -114,7 +114,7 @@ export default function News({ block }) {
                       <div className="mt-[30px]">
                         <Link
                           className="inline-flex text-[14px] items-center gap-[15px] font-bold"
-                          href={item.route_url}
+                          href={item?.route_url}
                         >
                           <span className="bg-[#9A0C16] p-[8px] rounded-full flex items-center justify-center w-[35px] h-[35px]">
                             <ChevronRight color="#fff" width={15} height={15} />

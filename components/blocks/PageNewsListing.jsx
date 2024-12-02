@@ -25,7 +25,7 @@ export default function Block({ block }) {
                         className="absolute h-full w-full object-cover transition-all duration-500 group-hover:scale-105"
                       />
                     </Link>
-                    <Link href={item.route_url} className="inline-block mt-2">
+                    <Link href={item?.route_url} className="inline-block mt-2">
                       <h2 className="font-bold text-[20px] leading-tight">
                         {item?.Title}
                       </h2>
