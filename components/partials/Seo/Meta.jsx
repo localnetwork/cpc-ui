@@ -65,13 +65,18 @@ export default function Meta({ metaImage, page }) {
 
       <style>
         {`
+        img {
+          max-width: 100% !important; 
+        }
+        .w-full {
+          width: 100% !important; 
+        }
         .object-cover {
           object-fit: cover;
         }
         .h-full {
           height: 100%;
         }
-          
         `}
       </style>
     </Head>
