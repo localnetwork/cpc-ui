@@ -68,6 +68,9 @@ export default function Meta({ metaImage, page }) {
         .object-cover {
           object-fit: cover;
         }
+        .h-full {
+          height: 100%;
+        }
           
         `}
       </style>
