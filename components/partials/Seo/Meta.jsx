@@ -62,6 +62,15 @@ export default function Meta({ metaImage, page }) {
           <link rel="canonical" href={currentUrl} />
         </>
       )}
+
+      <style>
+        {`
+        .object-cover {
+          object-fit: cover;
+        }
+          
+        `}
+      </style>
     </Head>
   );
 }
