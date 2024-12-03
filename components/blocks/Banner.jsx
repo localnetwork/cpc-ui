@@ -23,6 +23,7 @@ export default function Banner({ block }) {
         width={1920}
         height={1080}
         className="absolute top-0 left-0 z-0 w-full h-full object-cover"
+        style={{ objectFit: "cover" }}
       />
       <span className="absolute top-0 left-0 w-full h-full bg-[linear-gradient(180deg,_hsla(0,_0%,_5%,_0)_29.9%,_#0e0e0e)]" />
       {/* Bottom Line */}
