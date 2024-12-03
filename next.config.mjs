@@ -3,10 +3,10 @@ const nextConfig = {
   output: process.env.NODE_ENV === "production" ? "export" : "standalone",
   reactStrictMode: false,
   images: {
-    unoptimized: true, // Disable Image Optimization API
+    unoptimized: process.env.CLOUDFLARE == 1 ? true : false, // Disable Image Optimization API
   },
   images: {
-    loader: "custom",
+    loader: process.env.CLOUDFLARE == 1 ? "custom" : "",
     loaderFile: "./components/partials/ImageLoader.jsx",
     remotePatterns: [
       {
