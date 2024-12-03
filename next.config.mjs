@@ -6,6 +6,8 @@ const nextConfig = {
     unoptimized: true, // Disable Image Optimization API
   },
   images: {
+    loader: "custom",
+    loaderFile: "./components/partials/ImageLoader.jsx",
     remotePatterns: [
       {
         protocol: "https",
