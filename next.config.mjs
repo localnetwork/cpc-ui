@@ -3,6 +3,9 @@ const nextConfig = {
   output: process.env.NODE_ENV === "production" ? "export" : "standalone",
   reactStrictMode: false,
   images: {
+    unoptimized: true, // Disable Image Optimization API
+  },
+  images: {
     remotePatterns: [
       {
         protocol: "https",
