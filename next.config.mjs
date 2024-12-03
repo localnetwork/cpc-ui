@@ -6,7 +6,7 @@ const nextConfig = {
     unoptimized: process.env.CLOUDFLARE == 1 ? true : false, // Disable Image Optimization API
   },
   images: {
-    loader: process.env.CLOUDFLARE == 1 ? "custom" : "",
+    loader: process.env.CLOUDFLARE == 1 ? "custom" : "default",
     loaderFile: "./components/partials/ImageLoader.jsx",
     remotePatterns: [
       {
