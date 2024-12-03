@@ -1,6 +1,8 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 export default function Meta({ metaImage, page }) {
+  const router = useRouter();
   const [currentUrl, setCurrentUrl] = useState("");
   let metaImg = {
     url: metaImage || "/images/logo.png",
@@ -14,6 +16,8 @@ export default function Meta({ metaImage, page }) {
       return page?.route_url == "/home"
         ? Title
         : Title + " - Cordova Public College";
+    } else if (router.asPath.startsWith("/preview")) {
+      return "Page Preview";
     } else {
       return "404 - Page Not Found";
     }
