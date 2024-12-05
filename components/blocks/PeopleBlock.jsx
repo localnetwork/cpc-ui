@@ -7,7 +7,6 @@ import siteConfig from "@/site.config";
 import Link from "next/link";
 
 export default function PeopleBlock({ block }) {
-  console.log("block", block);
   const { siteUrl } = siteConfig;
 
   // Animation variants for fadeInUp
@@ -36,7 +35,7 @@ export default function PeopleBlock({ block }) {
           }}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-[50px] gap-y-[30px] md:gap-[50px] lg:gap-y-[100px]"
         >
-          {block?.FeaturedPeople.map((item, index) => (
+          {block?.FeaturedPeople?.map((item, index) => (
             <motion.div key={index} variants={fadeInUp}>
               <div className="group relative overflow-hidden">
                 <Link
@@ -55,7 +54,7 @@ export default function PeopleBlock({ block }) {
               </div>
               <h3 className="font-secondary mt-[30px] leading-normal hover:underline text-[20px] md:text-[25px] lg:text-[30px] mb-[15px]">
                 <Link href={`/${item?.slug}`} className="">
-                  {item.Name}
+                  {item.Title}
                 </Link>
               </h3>
               <h4 className="text-[#707070] text-[16px] md:text-[20px] font-semibold">

@@ -19,8 +19,6 @@ export default function People({ page }) {
     return faculty?.id !== page?.attributes?.id;
   });
 
-  console.log("filteredFaculty", filteredFaculty);
-
   return (
     <div className="">
       <div className="min-h-[300px] bg-[#0E0E0E]"></div>
