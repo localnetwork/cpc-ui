@@ -4,8 +4,10 @@ import Image from "next/image";
 
 import facultyEntriesData from "@/prebuild/static-data/faculty-entries.json";
 import siteConfig from "@/site.config";
+import Link from "next/link";
 
-export default function Faculty({ block }) {
+export default function PeopleBlock({ block }) {
+  console.log("block", block);
   const { siteUrl } = siteConfig;
 
   // Animation variants for fadeInUp
@@ -34,20 +36,27 @@ export default function Faculty({ block }) {
           }}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-[50px] gap-y-[30px] md:gap-[50px] lg:gap-y-[100px]"
         >
-          {facultyEntriesData.map((item, index) => (
+          {block?.FeaturedPeople.map((item, index) => (
             <motion.div key={index} variants={fadeInUp}>
-              <div className="relative">
+              <div className="group relative overflow-hidden">
+                <Link
+                  href={`/${item?.slug}`}
+                  className="absolute h-full w-full z-[1]"
+                />
                 <span className="pb-[125%] block" />
+
                 <Image
-                  className="w-full h-full absolute left-0 top-0 object-cover"
+                  className="group-hover:scale-105 transition w-full h-full absolute left-0 top-0 object-cover"
                   src={siteUrl + item.Image?.url}
                   width={500}
                   height={500}
                   alt={item.Name}
                 />
               </div>
-              <h3 className="font-secondary mt-[30px] leading-normal text-[20px] md:text-[25px] lg:text-[30px] mb-[15px]">
-                {item.Name}
+              <h3 className="font-secondary mt-[30px] leading-normal hover:underline text-[20px] md:text-[25px] lg:text-[30px] mb-[15px]">
+                <Link href={`/${item?.slug}`} className="">
+                  {item.Name}
+                </Link>
               </h3>
               <h4 className="text-[#707070] text-[16px] md:text-[20px] font-semibold">
                 {item.Position}

@@ -19,8 +19,13 @@ const Article = dynamic(() =>
   import("../../components/page/Article").then((module) => module.default)
 );
 
+const People = dynamic(() =>
+  import("@/components/page/People").then((module) => module.default)
+);
+
 export default function DynamicPage({ page, blocks }) {
   let ComponentToRender;
+  console.log("page?.type", page?.type);
   switch (page?.type) {
     case "projects":
       ComponentToRender = ProjectsPage;
@@ -30,6 +35,9 @@ export default function DynamicPage({ page, blocks }) {
       break;
     case "article":
       ComponentToRender = Article;
+      break;
+    case "faculty":
+      ComponentToRender = People;
       break;
     default:
       ComponentToRender = ParentBlock;

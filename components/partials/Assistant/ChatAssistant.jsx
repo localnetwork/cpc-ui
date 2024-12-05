@@ -286,7 +286,7 @@ export default function ChatAssistant() {
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={(e) => e.key === "Enter" && handleSend()}
                   placeholder="Type a message..."
-                  className="flex-grow text-[14px] p-2 rounded-md border border-[#ff9aa2] focus:border-[#ff9aa2] outline-none focus-visible:border-[#ff9aa2] bg-[#f7f7f7] text-[#777]"
+                  className="w-full text-[14px] p-2 rounded-md border border-[#ff9aa2] focus:border-[#ff9aa2] outline-none focus-visible:border-[#ff9aa2] bg-[#f7f7f7] text-[#777]"
                 />
                 <button
                   onClick={handleSend}

@@ -20,6 +20,9 @@ const CoursePage = dynamic(() =>
 const Article = dynamic(() =>
   import("../../components/page/Article").then((module) => module.default)
 );
+const People = dynamic(() =>
+  import("@/components/page/People").then((module) => module.default)
+);
 
 export default function DynamicPage() {
   const router = useRouter();
@@ -52,6 +55,8 @@ export default function DynamicPage() {
       case "course":
         return <CoursePage page={page.data} blocks={blocks} />;
         break;
+      case "faculty":
+        ComponentToRender = People;
       case "article":
         return <Article page={page.data} blocks={blocks} />;
       default:
