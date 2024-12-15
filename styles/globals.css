@@ -99,3 +99,11 @@ p:not(:last-of-type) {
 .swiper-pagination-bullet-active {
   @apply !bg-[#1B217A] scale-[1.5];
 }
+
+.mp-slider .swiper-pagination {
+  @apply relative !bottom-0 mt-[15px];
+}
+
+.mp-arrows.swiper-button-disabled {
+  @apply hidden;
+}

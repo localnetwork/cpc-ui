@@ -9,14 +9,7 @@ export default function Custom404() {
       </Head>
       <div className="">
         <div className="container py-[50px]">
-          <div className="flex items-center min-h-[500px]">
-            <Image
-              src={`/images/404.webp`}
-              alt="404"
-              width={560}
-              height={560}
-              className="invert brightness-0"
-            />
+          <div className="flex justify-center text-center items-center min-h-[500px]">
             <div className="p-[50px]">
               <h1 className="text-[150px] font-bold leading-normal font-secondary">
                 404

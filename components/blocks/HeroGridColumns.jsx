@@ -17,13 +17,17 @@ export default function Block({ block }) {
                 >
                   <div className="relative">
                     <span className="pb-[56.65%] block bg-[#333]" />
-                    <Image
-                      src={process.env.NEXT_PUBLIC_TENANT_API + item.Image?.url}
-                      className="w-full absolute top-0 left-0 h-full object-cover bg-[#f3f4f4]"
-                      width={500}
-                      height={300}
-                      alt="Sample Text"
-                    />
+                    {item?.Image?.url && (
+                      <Image
+                        src={
+                          process.env.NEXT_PUBLIC_TENANT_API + item?.Image?.url
+                        }
+                        className="w-full absolute top-0 left-0 h-full object-cover bg-[#f3f4f4]"
+                        width={500}
+                        height={300}
+                        alt="Sample Text"
+                      />
+                    )}
                   </div>
 
                   <div

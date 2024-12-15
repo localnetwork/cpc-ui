@@ -41,7 +41,7 @@ export default function ArticleGallery({ Gallery }) {
           {Gallery.map((item, index) => (
             <SwiperSlide key={index}>
               <div
-                className="relative overflow-hidden cursor-pointer group"
+                className="relative overflow-hidden cursor-pointer pb-[79.05%] group"
                 data-fancybox="gallery"
                 data-thumb={`${siteImagePath}${item?.formats?.thumbnail?.url}&w=2048`}
                 data-caption={item?.caption}
@@ -50,7 +50,7 @@ export default function ArticleGallery({ Gallery }) {
               >
                 <Image
                   src={siteUrl + item.url}
-                  className="w-full h-[400px] object-cover group-hover:scale-105 transition"
+                  className="w-full h-full absolute top-0 left-0 object-cover group-hover:scale-105 transition"
                   width={700}
                   height={700}
                   alt={item?.caption || "Hello World"}

@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import mainMenuData from "@/prebuild/static-data/main-menu-data";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 export default function MainMenu() {
   const [mainMenu, setMainMenu] = globalState((state) => [state.mainMenu]);
@@ -11,21 +12,27 @@ export default function MainMenu() {
     <div
       className={`menu-header ${
         mainMenu ? "menu-open" : "menu-closed"
-      } fixed z-[9000] top-0 left-0 w-full overflow-y-auto  overflow-x-hidden h-full bg-[#0c0f40]`}
+      } fixed z-[9000] top-0 left-0 w-full overflow-y-auto  overflow-x-hidden h-full bg-[#0E0E0E]`}
     >
       <div className="relative z-[2]">
         <div
           key={mainMenu ? "menu-open" : "menu-close"}
-          className="sticky mb-[30px] flex justify-between top-0 pt-[30px] px-[30px]"
+          className="bg-[#0E0E0E] z-[100] sticky mb-[30px] flex justify-between top-0 py-[15px] lg:py-[30px] px-[15px] lg:px-[50px]"
         >
-          <div className="hidden lg:block font-secondary text-[40px] leading-normal">
+          <div className="block font-secondary text-[40px] leading-normal">
             <Link
               href="/"
               onClick={() => {
                 globalState.setState({ mainMenu: false });
               }}
             >
-              Cordova Public College
+              <Image
+                src={"/assets/logo-cpc.png"}
+                alt="Logo"
+                width={60}
+                height={48}
+                className="h-[60px] w-auto contrast-0 brightness-200"
+              />
             </Link>
           </div>
           <div
@@ -48,12 +55,12 @@ export default function MainMenu() {
                 d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
               />
             </svg>
-            Close
+            <span className="hidden lg:block">Close</span>
           </div>
         </div>
 
-        <div className="flex flex-col flex-col-reverse md:flex-row px-[30px] mx-[-30px]">
-          <div className="w-full max-w-[25%] px-[30px]">
+        <div className="grid grid-cols-4 md:flex-row px-[15px] lg:px-[50px] mx-[-30px]">
+          {/* <div className="w-full max-w-[25%] px-[30px]">
             <h2 className="font-secondary text-[30px] leading-[45px]">
               Preparing for Success at Cordova Public College.
             </h2>
@@ -68,8 +75,8 @@ export default function MainMenu() {
                 Join Us
               </Link>
             </div>
-          </div>
-          <div className="columns-1 lg:columns-2 gap-[50px] px-[30px] w-full lg:w-3/4 custom-column-avoid">
+          </div> */}
+          <div className="col-span-3 columns-1 lg:columns-2 gap-[50px] px-[30px] w-full lg:w-3/4 custom-column-avoid">
             {mainMenuData?.items?.data?.map((item, index) => {
               const { title, url, children } = item?.attributes;
               return (
@@ -80,7 +87,7 @@ export default function MainMenu() {
                   <Link
                     className={`font-bold block text-[25px] mb-[20px] ${
                       children?.data?.length > 0
-                        ? "pb-[15px] border-b-[1px] border-[#6469b1]"
+                        ? "pb-[15px] border-b-[1px] border-[#7E7E7E]"
                         : ""
                     }`}
                     href={url || "#"}
@@ -97,7 +104,7 @@ export default function MainMenu() {
                         return (
                           <Link
                             key={childIndex}
-                            className="flex group items-center justify-between text-[18px] mb-[15px] pb-[15px] border-b-[1px] border-[#6469b1]"
+                            className="flex group items-center justify-between text-[18px] mb-[15px] pb-[15px] border-b-[1px] border-[#7E7E7E]"
                             href={url || "#"}
                             onClick={() => {
                               globalState.setState({ mainMenu: false });
@@ -109,7 +116,7 @@ export default function MainMenu() {
                               fill="none"
                               viewBox="0 0 24 24"
                               strokeWidth={1.5}
-                              stroke="#6469b1"
+                              stroke="#7E7E7E"
                               className="size-6 transition opacity-0 group-hover:opacity-100"
                             >
                               <path

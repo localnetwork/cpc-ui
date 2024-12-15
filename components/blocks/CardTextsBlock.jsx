@@ -7,7 +7,7 @@ export default function Block({ block }) {
 
   return (
     <div
-      className={`min-h-[500px] py-[30px] md:py-[100px] bg-[${extractedColor?.color}]`}
+      className={`py-[30px] md:py-[100px] bg-[${extractedColor?.color}]`}
       style={{ color: extractedColor.textColor }}
     >
       <div className="container">
@@ -18,7 +18,11 @@ export default function Block({ block }) {
               href={item?.Link || "#"}
               className="border-[#333] bg-[#0c0c0c] hover:bg-[#000] transition border p-[30px] rounded-sm"
             >
-              <h2 className="font-secondary text-[30px] md:text-[48px] leading-normal mb-[20px]">
+              <h2
+                className={`font-secondary text-[30px] md:text-[48px] leading-normal ${
+                  item?.Description ? "mb-[20px]" : ""
+                } `}
+              >
                 {item?.Title}
               </h2>
               <div

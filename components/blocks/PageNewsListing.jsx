@@ -15,17 +15,22 @@ export default function Block({ block }) {
                     <Link
                       className="relative block aspect-landscape w-full overflow-hidden
             rounded-2xl bg-primary-1"
-                      href={item?.route_url}
+                      href={item?.route_url || "#"}
                     >
-                      <Image
-                        src={siteConfig?.siteUrl + item.Image.url}
-                        width={500}
-                        height={500}
-                        alt={item?.Title}
-                        className="absolute h-full w-full object-cover transition-all duration-500 group-hover:scale-105"
-                      />
+                      {item?.Image?.url && (
+                        <Image
+                          src={siteConfig?.siteUrl + item?.Image?.url}
+                          width={500}
+                          height={500}
+                          alt={item?.Title}
+                          className="absolute h-full w-full object-cover transition-all duration-500 group-hover:scale-105"
+                        />
+                      )}
                     </Link>
-                    <Link href={item?.route_url} className="inline-block mt-2">
+                    <Link
+                      href={item?.route_url || "#"}
+                      className="inline-block mt-2"
+                    >
                       <h2 className="font-bold text-[20px] leading-tight">
                         {item?.Title}
                       </h2>

@@ -80,7 +80,12 @@ export default function Header({ ...props }) {
                   scrolled || blockFound ? "bg-[#0c0f40]" : "bg-[#1B217A]"
                 } absolute transition-all ease-[ease] duration-[300ms] left-[22px] rounded-full group-hover:w-[calc(100%-40px)] w-[50px] h-[50px]`}
               />
-              <div className="relative flex items-center gap-[15px]">
+              <div
+                className="relative flex items-center gap-[15px] cursor-pointer"
+                onClick={() => {
+                  alert("Currently work in progress.");
+                }}
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"

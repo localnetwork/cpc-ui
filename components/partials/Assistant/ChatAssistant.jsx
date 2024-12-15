@@ -84,9 +84,9 @@ export default function ChatAssistant() {
 
   return (
     <div
-      className={`fixed w-full bottom-0 p-[15px] ${
+      className={`fixed w-full bottom-0 p-[15px] z-[900] font-sans ${
         isResized && isOpen ? "max-w-full h-full" : "!w-auto max-w-[300px]"
-      } z-[9999] font-sans`}
+      } `}
     >
       {!isOpen && (
         <>

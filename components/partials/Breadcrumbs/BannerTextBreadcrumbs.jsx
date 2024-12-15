@@ -9,10 +9,13 @@ export default function BannerTextBreadcrumbs({ color, page }) {
 
   const { colorExtractor } = helper;
 
+  // Extract color using helper
   const extractedColor = colorExtractor(color);
 
-  // Split the asPath into an array of paths, filtering out any empty strings
-  const pathSegments = asPath.split("/").filter((segment) => segment);
+  // Remove any fragments (#) and query parameters (?) from the path, then split into segments
+  const cleanedPath = asPath.split("?")[0].split("#")[0]; // Remove query and fragment
+  const pathSegments = cleanedPath.split("/").filter((segment) => segment);
+
   return (
     <nav
       aria-label="breadcrumb"
@@ -20,27 +23,37 @@ export default function BannerTextBreadcrumbs({ color, page }) {
     >
       <div className="container">
         <ol className="breadcrumb flex">
+          {/* Home Link */}
           <li className="flex items-center">
             <Link href="/">Home</Link>{" "}
             <span className="mx-[15px] rounded-full p-[5px] flex items-center justify-center w-[25px] h-[25px] bg-[#9A0C16]">
               <ChevronRight color="#fff" />
             </span>
           </li>
+
+          {/* Dynamic Path Segments */}
           {pathSegments.map((segment, index) => {
             // Build the path up to the current segment
             const pathToSegment = `/${pathSegments
               .slice(0, index + 1)
               .join("/")}`;
 
-            // Capitalize the segment for display
-            const segmentName = decodeURIComponent(
-              segment.charAt(0).toUpperCase() + segment.slice(1)
-            );
+            // Decode and clean segment name for display
+            const segmentName =
+              decodeURIComponent(segment)
+                .replace(/#/g, "") // Remove stray hash symbols
+                .replace(/-/g, " ") // Replace all dashes with spaces
+                .charAt(0)
+                .toUpperCase() +
+              decodeURIComponent(segment)
+                .replace(/#/g, "")
+                .replace(/-/g, " ")
+                .slice(1);
 
             return (
               <li
                 key={pathToSegment}
-                className={`breadcrumb-item flex items-center ${
+                className={`breadcrumb-item flex capitalize items-center ${
                   index === pathSegments.length - 1 ? "active opacity-70" : ""
                 }`}
               >

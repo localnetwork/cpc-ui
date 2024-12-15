@@ -35,7 +35,6 @@ export default function DynamicPage() {
     key: block.componentName,
     data: block.data,
   }));
-  console.log("modifiedBlocks", modifiedBlocks);
   PAGEAPI.getFindRouteSWR(`${router?.query?.route}`, "", {
     onSuccess: (data) => {
       setPage(data);
@@ -44,8 +43,6 @@ export default function DynamicPage() {
       setError(true);
     },
   });
-
-  console.log("page", page?.data?.attributes);
 
   const Renderer = ({ page, blocks }) => {
     switch (page?.data?.type) {

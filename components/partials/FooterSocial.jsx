@@ -32,6 +32,7 @@ export default function FooterSocial({ social_links }) {
             key={index}
             className="hover:mt-[-5px] hover:opacity-80 transition-[all_ease_0.3s] inline-block "
             href={item?.Link || "#"}
+            target="_blank"
           >
             {renderedIcon(item.Platform)}
           </Link>

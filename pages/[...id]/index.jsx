@@ -25,7 +25,6 @@ const People = dynamic(() =>
 
 export default function DynamicPage({ page, blocks }) {
   let ComponentToRender;
-  console.log("page?.type", page?.type);
   switch (page?.type) {
     case "projects":
       ComponentToRender = ProjectsPage;

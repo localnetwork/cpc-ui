@@ -51,14 +51,13 @@ module.exports.preBuildDevelopment = async () => {
 
   const newsEntriesHandler = await axios.get(
     envVars.NEXT_PUBLIC_TENANT_API +
-      `/api/contents/entries/article?filters={"Category":"Publication"}&sort=createdAt:desc&limit=3`
+      `/api/contents/entries/article?limit=3&sort=createdAt:desc`
   );
 
   const newsEntriesData = dataFormatter.deserialize(newsEntriesHandler.data);
 
   const AllnewsEntriesHandler = await axios.get(
-    envVars.NEXT_PUBLIC_TENANT_API +
-      `/api/contents/entries/article?filters={"Category":"SAO"}&limit=3&sort=createdAt:desc`
+    envVars.NEXT_PUBLIC_TENANT_API + `/api/contents/entries/article`
   );
 
   const AllnewsEntriesData = dataFormatter.deserialize(
