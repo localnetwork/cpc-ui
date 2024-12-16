@@ -104,7 +104,7 @@ export default function MainMenu() {
                         return (
                           <Link
                             key={childIndex}
-                            className="flex group items-center justify-between text-[18px] mb-[15px] pb-[15px] border-b-[1px] border-[#7E7E7E]"
+                            className="flex group items-center hover:text-[#7E7E7E] transition ease justify-between text-[18px] mb-[15px] pb-[15px] border-b-[1px] border-[#7E7E7E]"
                             href={url || "#"}
                             onClick={() => {
                               globalState.setState({ mainMenu: false });

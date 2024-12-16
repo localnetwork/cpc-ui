@@ -16,7 +16,7 @@ export default function Block({ block }) {
             <Link
               key={index}
               href={item?.Link || "#"}
-              className="border-[#333] bg-[#0c0c0c] hover:bg-[#000] transition border p-[30px] rounded-sm"
+              className={`border-[#333] bg-[${extractedColor.textColor}] hover:opacity-70 transition border p-[30px] rounded-sm`}
             >
               <h2
                 className={`font-secondary text-[30px] md:text-[48px] leading-normal ${
