@@ -107,3 +107,7 @@ p:not(:last-of-type) {
 .mp-arrows.swiper-button-disabled {
   @apply hidden;
 }
+
+.break-words {
+  word-break: break-word;
+}

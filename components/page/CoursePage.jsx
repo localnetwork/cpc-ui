@@ -28,7 +28,8 @@ export default function CoursePage({ page, blocks }) {
   };
 
   const { siteUrl, siteImagePath } = siteConfig;
-  const { Title, Description, FAQs, Subjects, Gallery } = page?.attributes;
+  const { Title, Description, FAQs, Subjects, Gallery, Logo } =
+    page?.attributes;
 
   useEffect(() => {});
 
@@ -43,7 +44,7 @@ export default function CoursePage({ page, blocks }) {
           alt={Title}
         />
         <Chalk />
-        <div className="container pb-[50px] relative z-[200] relative">
+        <div className="container pb-[50px] z-[200] relative">
           <h1 className="relative inline-block text-white text-[30px] md:text-[50px] font-secondary leading-[120%] lg:leading-[65px]">
             {Title}
             <motion.div
@@ -68,7 +69,11 @@ export default function CoursePage({ page, blocks }) {
             transition={{ repeat: Infinity, duration: 5, ease: "linear" }}
           >
             <Image
-              src="/assets/logo-cpc.png"
+              src={
+                page?.attributes?.Logo?.formats?.thumbnail?.url
+                  ? `${process.env.NEXT_PUBLIC_TENANT_API}${page.attributes.Logo.formats.thumbnail.url}`
+                  : "/assets/logo-cpc.png"
+              }
               className="bg-[#F5F4F1] p-[5px] rounded-full"
               width={100}
               height={100}

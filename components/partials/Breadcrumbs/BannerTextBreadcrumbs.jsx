@@ -19,10 +19,10 @@ export default function BannerTextBreadcrumbs({ color, page }) {
   return (
     <nav
       aria-label="breadcrumb"
-      className={`border-y-[1px] border-[#b1863d] mt-[-70px] text-[25px] py-[30px] text-[${extractedColor?.textColor}]`}
+      className={`border-y-[1px] border-[#b1863d] mt-[-70px] text-[15px] md:text-[20px] lg:text-[25px] py-[30px] text-[${extractedColor?.textColor}]`}
     >
       <div className="container">
-        <ol className="breadcrumb flex">
+        <ol className="breadcrumb gap-[15px] flex flex-wrap">
           {/* Home Link */}
           <li className="flex items-center">
             <Link href="/">Home</Link>{" "}

@@ -35,7 +35,7 @@ export default function Footer() {
               Contact Details
             </h2>
 
-            <div className="flex items-center mb-[15px]">
+            <div className="flex items-center break-words mb-[15px]">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -58,7 +58,7 @@ export default function Footer() {
               {Address}
             </div>
 
-            <div className="flex items-center mb-[15px]">
+            <div className="flex items-center break-words mb-[15px]">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -76,7 +76,7 @@ export default function Footer() {
               {Phone}
             </div>
 
-            <div className="flex items-center mb-[15px]">
+            <div className="flex items-center break-words mb-[15px]">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"

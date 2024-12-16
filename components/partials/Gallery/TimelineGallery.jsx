@@ -12,6 +12,23 @@ export default function TimelineGallery({ gallery }) {
         spaceBetween={20}
         onSlideChange={() => console.log("slide change")}
         onSwiper={(swiper) => console.log(swiper)}
+        breakpoints={{
+          0: {
+            slidesPerView: 2,
+          },
+          576: {
+            slidesPerView: 3,
+          },
+          768: {
+            slidesPerView: 4,
+          },
+          992: {
+            slidesPerView: 5,
+          },
+          1200: {
+            slidesPerView: 6,
+          },
+        }}
       >
         {gallery.map((item, index) => {
           const isOdd = helper.isOdd(index);

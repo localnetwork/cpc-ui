@@ -33,7 +33,15 @@ export default function ArticleGallery({ Gallery }) {
           pagination={{
             clickable: true,
             renderBullet: (index, className) => {
-              return `<span class="h-[15px] w-[15px] ${className}"></span>`;
+              return `<span className="h-[15px] w-[15px] ${className}"></span>`;
+            },
+          }}
+          breakpoints={{
+            320: {
+              slidesPerView: 2,
+            },
+            768: {
+              slidesPerView: 3,
             },
           }}
           modules={[Pagination]} // Register the Pagination module

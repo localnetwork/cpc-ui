@@ -27,7 +27,9 @@ export default function KeyPeople({ block }) {
       style={{ color: extractedColor.textColor }}
     >
       <div className="container">
-        <h2 className="text-[50px] font-secondary mb-[50px]">Key People</h2>
+        <h2 className="text-[50px] font-secondary mb-[50px] leading-normal">
+          Key People
+        </h2>
         <div className="relative">
           <button
             className="mp-arrows outline outline-2 outline-offset-[5px] outline-[#1B217A] custom-prev absolute top-1/2 left-[-25px] transform -translate-y-1/2 z-10 bg-[#1B217A] shadow-md text-white rounded-full w-[70px] h-[70px] flex items-center justify-center transition"
@@ -70,9 +72,16 @@ export default function KeyPeople({ block }) {
           <Swiper
             slidesPerView={4}
             spaceBetween={30}
-            onSlideChange={(swiperCore) => {
-              const { activeIndex } = swiperCore;
-              setCurrentIndex(activeIndex + 3);
+            breakpoints={{
+              320: {
+                slidesPerView: 2,
+              },
+              576: {
+                slidesPerView: 3,
+              },
+              1024: {
+                slidesPerView: 4,
+              },
             }}
             navigation={{
               nextEl: ".custom-next", // Attach custom classes
@@ -143,6 +152,6 @@ export default function KeyPeople({ block }) {
           </Swiper>
         </div>
       </div>
-    </div>
+    </div>  
   );
 }

@@ -8,7 +8,7 @@ export default function Block({ block }) {
     <section className="min-h-[60vh] bg-black pt-[150px] pb-[100px]">
       <div className="container">
         {Title && (
-          <h2 className="font-secondary text-[80px] leading-normal mb-[50px]">
+          <h2 className="font-secondary text-[50px] md:text-[60px] lg:text-[80px] leading-normal mb-[50px]">
             {Title}
           </h2>
         )}

@@ -76,9 +76,6 @@ export default function Meta({ metaImage, page }) {
         img {
           max-width: 100% !important; 
         }
-        .w-full {
-          width: 100% !important; 
-        }
         .object-cover {
           object-fit: cover;
         }

@@ -15,7 +15,9 @@ export default function Text({ block }) {
     >
       <div className="container">
         {Title && (
-          <h2 className="text-[50px] font-secondary mb-[50px]">{Title}</h2>
+          <h2 className="text-[50px] font-secondary mb-[50px] leading-normal">
+            {Title}
+          </h2>
         )}
         <div
           className="leading-[35px] text-[20px]"

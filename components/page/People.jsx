@@ -33,13 +33,13 @@ export default function People({ page }) {
 
   return (
     <div className="">
-      <div className="min-h-[300px] bg-[#0E0E0E]"></div>
+      <div className="min-h-[300px] bg-[#0E0E0E]" />
 
       <div className="relative bg-[#F5F4F1] pb-[150px]">
         <div className="container ">
           <div className="flex gap-[50px] flex-wrap">
             <div className="relative mt-[-100px] pl-[15px]">
-              <div className=" w-[200px] h-[275px] p-[10px] relative">
+              <div className=" w-[200px] h-[110%] p-[10px] relative">
                 <span className="border-[5px] border-[#9A0C16] absolute top-[-14px] left-[-14px] h-full w-full" />
                 <span className="border-[5px] border-[#1B217A] absolute top-[0px] left-[-1px] h-full w-full" />
                 {page?.attributes?.Image?.url && (
@@ -53,8 +53,8 @@ export default function People({ page }) {
                 )}
               </div>
             </div>
-            <div className="text-[#0E0E0E] pt-[50px]">
-              <h1 className="text-[50px] mb-[20px] font-secondary">
+            <div className="text-[#0E0E0E] sm:pt-[50px]">
+              <h1 className="text-[40px] lg:text-[50px] leading-normal lg:leading-[35px] mb-[20px] font-secondary">
                 {page?.attributes?.Title}
               </h1>
               <p className="opacity-70">{page?.attributes?.Position}</p>
@@ -102,8 +102,8 @@ export default function People({ page }) {
           </div>
 
           {filteredFaculty?.length > 0 && (
-            <div className="mt-[100px]">
-              <h2 className="text-[50px] font-secondary mb-[50px] text-[#0E0E0E]">
+            <div className="md:mt-[50px] lg:mt-[70px] xl:mt-[100px]">
+              <h2 className="text-[40px] lg:text-[50px] font-secondary mb-[30px] lg:mb-[50px] leading-normal text-[#0E0E0E]">
                 More People
               </h2>
               <div className="relative">
@@ -148,6 +148,17 @@ export default function People({ page }) {
                 <Swiper
                   slidesPerView={4}
                   spaceBetween={30}
+                  breakpoints={{
+                    320: {
+                      slidesPerView: 2,
+                    },
+                    576: {
+                      slidesPerView: 3,
+                    },
+                    1024: {
+                      slidesPerView: 4,
+                    },
+                  }}
                   onSlideChange={(swiperCore) => {
                     const { activeIndex } = swiperCore;
                     setCurrentIndex(activeIndex + 3);
@@ -159,7 +170,7 @@ export default function People({ page }) {
                   // pagination={{
                   //   clickable: true,
                   //   renderBullet: (index, className) => {
-                  //     return `<span class="h-[15px] w-[15px] ${className}"></span>`;
+                  //     return `<span className="h-[15px] w-[15px] ${className}"></span>`;
                   //   },
                   // }}
                   className="mp-slider"
@@ -181,7 +192,7 @@ export default function People({ page }) {
                           />
 
                           <div className="relative overflow-hidden pb-[125%]">
-                            <span class="absolute group-hover:opacity-100 opacity-0 transition z-[1] top-0 left-0 w-full h-full bg-[linear-gradient(0deg,#0e0e0e,transparent)]"></span>
+                            <span className="absolute group-hover:opacity-100 opacity-0 transition z-[1] top-0 left-0 w-full h-full bg-[linear-gradient(0deg,#0e0e0e,transparent)]"></span>
                             <div className="person-info translate-y-[100%] group-hover:translate-y-0 transition flex justify-between items-center p-[15px] z-[20] absolute bottom-0 left-0 w-full">
                               <h2 className="font-bold text-[18px]">
                                 {item?.Title}

@@ -6,11 +6,15 @@ import { useEffect, useState } from "react";
 import Headroom from "react-headroom";
 
 import globalState from "@/lib/store/globalState";
-import MainMenu from "./Menus/MainMenu";
+// import MainMenu from "./Menus/MainMenu";
 import { useRouter } from "next/router";
+import dynamic from "next/dynamic";
 
 import { disabledTypes, disabledComponents } from "@/lib/utils/constant";
 import { blockExistChecker } from "@/lib/utils/block";
+const MainMenu = dynamic(() =>
+  import("./Menus/MainMenu").then((module) => module.default)
+);
 export default function Header({ ...props }) {
   const [scrolled, setScrolled] = useState(false);
   const [mainMenu] = globalState((state) => [state.mainMenu]);

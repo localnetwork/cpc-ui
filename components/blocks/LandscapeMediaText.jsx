@@ -20,7 +20,7 @@ export default function LandscapeMediaText({ block }) {
       style={{ color: extractedColor.textColor }}
     >
       <div className="container">
-        <div className="grid gap-[50px] grid-cols-3 items-center">
+        <div className="grid gap-[50px] grid-cols-1 md:grid-cols-3 items-center">
           <div className="col-span-1 relative pb-[110%]">
             <span className="border-[5px] border-[#1B217A] absolute top-[0px] left-[-1px] h-full w-full" />
             <span className="border-[5px] border-[#9A0C16] absolute top-[-14px] left-[-14px] h-full w-full" />

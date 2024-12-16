@@ -4,15 +4,14 @@ import mainMenuData from "@/prebuild/static-data/main-menu-data";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-
+import newsEntriesData from "@/prebuild/static-data/news-block-articles.json";
 export default function MainMenu() {
   const [mainMenu, setMainMenu] = globalState((state) => [state.mainMenu]);
-
   return (
     <div
       className={`menu-header ${
         mainMenu ? "menu-open" : "menu-closed"
-      } fixed z-[9000] top-0 left-0 w-full overflow-y-auto  overflow-x-hidden h-full bg-[#0E0E0E]`}
+      } fixed z-[9000] top-0 left-0 w-full overflow-y-auto [&::-webkit-scrollbar]:[width:8px] [&::-webkit-scrollbar]:[background:#ccc] scrollbar [&::-webkit-scrollbar-thumb]:[cursor:col-resize] [&::-webkit-scrollbar]:[borderRadius:8px] [&::-webkit-scrollbar-thumb]:[borderRadius:8px] [&::-webkit-scrollbar-thumb]:bg-[#9A0C16]  overflow-x-hidden h-full bg-[#0E0E0E]`}
     >
       <div className="relative z-[2]">
         <div
@@ -76,7 +75,7 @@ export default function MainMenu() {
               </Link>
             </div>
           </div> */}
-          <div className="col-span-3 columns-1 lg:columns-2 gap-[50px] px-[30px] w-full lg:w-3/4 custom-column-avoid">
+          <div className="col-span-4 lg:col-span-3 columns-1 lg:columns-2 gap-[50px] px-[30px] w-full lg:w-3/4 custom-column-avoid">
             {mainMenuData?.items?.data?.map((item, index) => {
               const { title, url, children } = item?.attributes;
               return (
@@ -133,6 +132,50 @@ export default function MainMenu() {
                 </div>
               );
             })}
+          </div>
+
+          <div className="hidden lg:block lg:col-span-1">
+            <h2 className="font-bold block text-[25px] mb-[40px] pb-[15px] border-b-[1px] border-[#7E7E7E]">
+              Updates
+            </h2>
+            <div className="flex flex-col gap-y-[50px] gap-x-[30px]">
+              {newsEntriesData?.map((item, index) => (
+                <div
+                  key={index}
+                  className="relative pl-[15px] gap-[15px] grid grid-cols-3"
+                >
+                  <Link
+                    href={`/${item?.slug}`}
+                    className="absolute top-0 left-0 w-full h-full z-[1000]"
+                    onClick={() => {
+                      globalState.setState({ mainMenu: false });
+                    }}
+                  />
+                  <div className="relative col-span-1">
+                    <span className="bg-[#1B217A] absolute top-[-14px] left-[-14px] h-full w-full" />
+                    <Image
+                      src={
+                        process.env.NEXT_PUBLIC_TENANT_API +
+                        item?.Image?.formats?.thumbnail?.url
+                      }
+                      width={300}
+                      height={300}
+                      className="w-full relative h-[100px] object-cover"
+                    />
+                  </div>
+
+                  <div className="col-span-2">
+                    <h3 className="text-[20px] font-secondary line-clamp-1">
+                      {item?.Title}
+                    </h3>
+                    <div
+                      className="line-clamp-1 text-[14px] text-[#7E7E7E]"
+                      dangerouslySetInnerHTML={{ __html: item?.Description }}
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
