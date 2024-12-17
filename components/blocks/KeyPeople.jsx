@@ -152,6 +152,6 @@ export default function KeyPeople({ block }) {
           </Swiper>
         </div>
       </div>
-    </div>  
+    </div>
   );
 }

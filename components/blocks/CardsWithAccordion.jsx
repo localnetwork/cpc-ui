@@ -6,6 +6,17 @@ export default function CardsWithAccordion({ block }) {
   const { colorExtractor } = helper;
 
   const extractedColor = colorExtractor(Theme);
+
+  // State to manage open/close for each accordion item
+  const [openItems, setOpenItems] = useState({});
+
+  const toggleItem = (groupIndex, itemIndex) => {
+    setOpenItems((prev) => ({
+      ...prev,
+      [`${groupIndex}-${itemIndex}`]: !prev[`${groupIndex}-${itemIndex}`],
+    }));
+  };
+
   return (
     <section
       className={`py-[100px] bg-[${extractedColor.color}]`}
@@ -34,13 +45,13 @@ export default function CardsWithAccordion({ block }) {
                 </div>
                 <div className="p-[30px] lg:p-[50px] w-full col-span-2">
                   {group?.Items?.map((item, itemIndex) => {
-                    const [isOpen, setIsOpen] = useState(false);
+                    const isOpen = openItems[`${groupIndex}-${itemIndex}`];
 
                     return (
                       <div key={itemIndex}>
                         {item?.Title && (
                           <div
-                            className={`flex  w-full items-center justify-between ${
+                            className={`flex w-full items-center justify-between ${
                               item?.Description
                                 ? "cursor-pointer select-none"
                                 : ""
@@ -49,7 +60,7 @@ export default function CardsWithAccordion({ block }) {
                                 ? ""
                                 : "border-b-[1px]"
                             } border-[#7E7E7E] py-[20px]`}
-                            onClick={() => setIsOpen(!isOpen)}
+                            onClick={() => toggleItem(groupIndex, itemIndex)}
                           >
                             <div className="text-[20px]">{item?.Title}</div>
                             {item?.Description && (
