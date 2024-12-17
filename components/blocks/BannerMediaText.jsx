@@ -10,7 +10,7 @@ export default function BannerMediaText({ page, block }) {
   const extractedColor = colorExtractor(Theme);
   return (
     <section
-      className={`min-h-[600px] flex flex-col bg-[${extractedColor.color}]`}
+      className={`lg:min-h-[600px] flex flex-col bg-[${extractedColor.color}]`}
     >
       <div className="relative grow flex overflow-hidden mb-[70px]">
         <span className="absolute top-0 left-0 w-full h-full bg-[#000] bg-opacity-70 z-[1]" />
@@ -21,17 +21,17 @@ export default function BannerMediaText({ page, block }) {
           className="absolute top-0 left-0 w-full h-full object-cover"
         />
         <div
-          className={`container flex grow text-[${extractedColor.textColor}]`}
+          className={`pt-[100px] pb-[50px] lg:py-0 container flex grow text-[${extractedColor.textColor}]`}
         >
-          <div className="grid text-white relative z-[200] grid-cols-2">
-            <div className="flex items-center border-r-[1px] border-[#fff] pr-[50px]">
+          <div className="grid text-white relative z-[200] grid-cols-1 lg:grid-cols-2">
+            <div className="flex items-center lg:border-r-[1px] border-[#fff] lg:py-[70px] lg:pr-[50px]">
               <h2 className="text-[40px] leading-normal sm:text-[45px] md:text-[60px] lg:text-[80px] font-secondary mb-[20px]">
                 {Title}
               </h2>
             </div>
             {Description && (
               <div
-                className="flex px-[70px] font-bold text-[30px] leading-normal justify-center flex-col"
+                className="flex lg:p-[70px] text-[16px] lg:font-bold lg:text-[30px] leading-normal lg:justify-center flex-col"
                 dangerouslySetInnerHTML={{ __html: Description }}
               />
             )}

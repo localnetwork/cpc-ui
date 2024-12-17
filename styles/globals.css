@@ -111,3 +111,8 @@ p:not(:last-of-type) {
 .break-words {
   word-break: break-word;
 }
+
+html,
+body {
+  scroll-behavior: smooth;
+}
