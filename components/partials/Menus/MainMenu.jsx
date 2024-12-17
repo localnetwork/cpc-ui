@@ -75,7 +75,7 @@ export default function MainMenu() {
               </Link>
             </div>
           </div> */}
-          <div className="col-span-4 lg:col-span-3 columns-1 lg:columns-2 gap-[50px] px-[30px] w-full lg:w-3/4 custom-column-avoid">
+          <div className="col-span-4 lg:col-span-3 columns-1 lg:columns-2 gap-[50px] px-[30px] w-full">
             {mainMenuData?.items?.data?.map((item, index) => {
               const { title, url, children } = item?.attributes;
               return (
