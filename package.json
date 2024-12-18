@@ -7,6 +7,7 @@
     "dev": "next dev",
     "predev": "node prebuild/prebuild-dev.js",
     "prebuild": "node prebuild/prebuild-dev.js",
+    "postbuild": "next-sitemap",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -22,6 +23,7 @@
     "https": "^1.0.0",
     "jsona": "^1.12.1",
     "next": "^15.0.2",
+    "next-sitemap": "^4.2.3",
     "nextjs-toploader": "^3.6.15",
     "nodemailer": "^6.9.15",
     "path": "^0.12.7",
