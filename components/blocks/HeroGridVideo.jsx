@@ -51,7 +51,10 @@ export default function Block({ block }) {
 
                   <div>
                     <Image
-                      src={siteUrl + block?.Thumbnail?.url}
+                      src={
+                        siteUrl + block?.Thumbnail?.formats?.medium?.url ||
+                        siteUrl + block?.Thumbnail?.url
+                      }
                       width={600}
                       height={400}
                       alt={Title}
