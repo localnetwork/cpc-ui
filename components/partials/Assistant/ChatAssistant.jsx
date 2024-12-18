@@ -121,7 +121,7 @@ export default function ChatAssistant() {
           <div className="flex gap-2 px-3 py-2 justify-between bg-[#f5f5f5] border-b">
             <div className="flex items-center text-[#777] text-[14px] gap-2 leading-[100%]">
               <span className="bg-[#30ff30] w-[10px] h-[10px] rounded-full block mt-[2px]" />
-              AI Assistant
+              Clifford AI Assistant
             </div>
             <div className="flex gap-2 text-[#777]">
               <button
@@ -273,7 +273,7 @@ export default function ChatAssistant() {
                       ></path>
                     </g>
                   </svg>
-                  Ask anything about Cordova Public College.
+                  Talk with Clifford about CPC.
                 </div>
               </div>
             )}
