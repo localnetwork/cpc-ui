@@ -3,11 +3,16 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function Block({ block }) {
-  const { Theme, Image: image, Title, Description, Alignment } = block;
+  const {
+    Theme,
+    Image: image,
+    Title,
+    Description,
+    Alignment,
+    Link: link,
+  } = block;
   const { colorExtractor } = helper;
   const extractedColor = colorExtractor(Theme);
-
-  console.log("Alignment", Alignment);
 
   return (
     <section
@@ -33,31 +38,32 @@ export default function Block({ block }) {
                 dangerouslySetInnerHTML={{ __html: Description }}
               />
             )}
-
-            <div className="mt-[50px]">
-              <Link
-                href="/about"
-                className="inline-flex text-[18px] md:text-[20px] font-bold items-center gap-[15px]"
-              >
-                <span className="bg-[#666f78] text-white p-2 rounded-full mr-2 inline-block">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="currentColor"
-                    className="w-[30px] h-[30px] cursor-pointer"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
-                    />
-                  </svg>
-                </span>
-                Learn More
-              </Link>
-            </div>
+            {link && (
+              <div className="mt-[50px]">
+                <Link
+                  href={link}
+                  className="inline-flex text-[18px] md:text-[20px] font-bold items-center gap-[15px]"
+                >
+                  <span className="bg-[#666f78] text-white p-2 rounded-full mr-2 inline-block">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="w-[30px] h-[30px] cursor-pointer"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
+                      />
+                    </svg>
+                  </span>
+                  Learn More
+                </Link>
+              </div>
+            )}
           </div>
           <div className="w-full md:max-w-[50%] md:px-[25px] flex justify-center">
             <Image
