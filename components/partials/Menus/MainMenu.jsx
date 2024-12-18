@@ -150,6 +150,7 @@ export default function MainMenu() {
                     onClick={() => {
                       globalState.setState({ mainMenu: false });
                     }}
+                    aria-label={`Read more about ${item?.title}`}
                   />
                   <div className="relative col-span-1">
                     <span className="bg-[#1B217A] absolute top-[-14px] left-[-14px] h-full w-full" />
