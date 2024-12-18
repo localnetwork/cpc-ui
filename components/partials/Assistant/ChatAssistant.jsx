@@ -240,7 +240,7 @@ export default function ChatAssistant() {
                           </>
                         ) : (
                           <div className="self-start p-3 text-gray-500 italic">
-                            Assistant is typing...
+                            Clifford is typing...
                           </div>
                         )}
                       </div>
