@@ -5,6 +5,7 @@
 @font-face {
   font-family: "Canela";
   src: url("/fonts/Canela.woff2") format("woff2");
+  font-display: swap;
 }
 
 @font-face {
@@ -12,18 +13,21 @@
   src: url("/fonts/GT-America-Standard-Regular.woff2") format("woff2"),
     url("/fonts/GT-America-Standard-Regular.woff") format("woff");
   font-weight: 400;
+  font-display: swap;
 }
 @font-face {
   font-family: "GT-America";
   src: url("/fonts/GT-America-Standard-Medium.woff2") format("woff2"),
     url("/fonts/GT-America-Standard-Medium.woff") format("woff");
   font-weight: 600;
+  font-display: swap;
 }
 @font-face {
   font-family: "GT-America";
   src: url("/fonts/GT-America-Standard-Bold.woff2") format("woff2"),
     url("/fonts/GT-America-Standard-Bold.woff") format("woff");
   font-weight: 700;
+  font-display: swap;
 }
 
 @font-face {
@@ -35,17 +39,20 @@
   font-family: "Recoleta";
   src: url("/fonts/recoleta/recoleta-bold.woff2");
   font-weight: 700;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Recoleta";
   src: url("/fonts/recoleta/recoleta-light.woff2");
   font-weight: 300;
+  font-display: swap;
 }
 @font-face {
   font-family: "Recoleta";
   src: url("/fonts/recoleta/recoleta-regular.woff2");
   font-weight: 400;
+  font-display: swap;
 }
 
 body {
