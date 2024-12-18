@@ -161,6 +161,7 @@ export default function MainMenu() {
                       width={300}
                       height={300}
                       className="w-full relative h-[100px] object-cover"
+                      alt="CPC Logo"
                     />
                   </div>
 
